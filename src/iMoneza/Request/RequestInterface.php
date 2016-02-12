@@ -1,0 +1,35 @@
+<?php
+/**
+ * The interface for request objects
+ *
+ * @author Aaron Saray
+ */
+
+namespace iMoneza\Request;
+
+/**
+ * Interface RequestInterface
+ * @package iMoneza\Request
+ */
+interface RequestInterface
+{
+    /**
+     * Sets the URL for this request
+     *
+     * @param $url
+     * @return RequestInterface
+     */
+    public function setUrl($url);
+
+    /**
+     * Runs the request
+     * @return mixed
+     */
+    public function execute();
+
+    /**
+     * Gets response information unique to this request
+     * @return mixed
+     */
+    public function getResponseInfo();
+}
