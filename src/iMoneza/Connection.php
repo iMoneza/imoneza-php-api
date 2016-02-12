@@ -6,6 +6,7 @@
  */
 
 namespace iMoneza;
+use iMoneza\Exception;
 use iMoneza\Request\RequestInterface;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
@@ -56,6 +57,11 @@ class Connection
         $this->log = $log;
     }
 
+    /**
+     * @return mixed
+     * @throws Exception\AccessDenied
+     * @throws Exception\TransferError
+     */
     public function request()
     {
         $url = $this->baseURLAccessAPI;
@@ -67,6 +73,16 @@ class Connection
         $result = $this->request->execute();
         $this->debug('Request completed.', ['INFO' => $this->request->getResponseInfo(), 'BODY' => $result]);
 
+        $this->handleRequestError($result);
+
+        // really shouldn't happen unless something changes or I missed something
+        if (($httpCode = $this->request->getResponseHTTPCode()) !== 200) {
+            $message = "HTTP Error Code of {$httpCode} was generated and not caught: " . $result;
+            $this->log->error($message);
+            throw new Exception\TransferError($message);
+        }
+
+        $this->debug('All error checking passed - returning result.');
 
         return $result;
     }
@@ -77,6 +93,29 @@ class Connection
     public function setBaseURLAccessAPI($url)
     {
         $this->baseURLAccessAPI = $url;
+    }
+
+    /**
+     * Handles a potential request error by throwing a useful exception
+     * @param $result string|false
+     * @throws Exception\AccessDenied
+     * @throws Exception\TransferError
+     */
+    protected function handleRequestError($result)
+    {
+        /**
+         * Curl error
+         */
+        if ($result === false) {
+            throw new Exception\TransferError($this->request->getErrorString(), $this->request->getErrorCode());
+        }
+
+        switch ($this->request->getResponseHTTPCode()) {
+            case 403:
+                $this->log->error($result, ['CODE'=>403]);
+                throw new Exception\AccessDenied($result, 403);
+                break;
+        }
     }
 
     /**

@@ -32,4 +32,19 @@ interface RequestInterface
      * @return mixed
      */
     public function getResponseInfo();
+
+    /**
+     * @return integer the HTTP Code that was returned
+     */
+    public function getResponseHTTPCode();
+
+    /**
+     * @return string the error message
+     */
+    public function getErrorString();
+
+    /**
+     * @return integer the error code
+     */
+    public function getErrorCode();
 }

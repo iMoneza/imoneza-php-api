@@ -24,6 +24,7 @@ class Curl implements RequestInterface
      */
     public function __construct()
     {
+        $this->handle = curl_init();
         $this->setOption(CURLOPT_RETURNTRANSFER, true);
     }
 
@@ -45,7 +46,6 @@ class Curl implements RequestInterface
      */
     public function execute()
     {
-        $this->initHandle();
         return curl_exec($this->handle);
     }
 
@@ -56,8 +56,31 @@ class Curl implements RequestInterface
      */
     public function getResponseInfo()
     {
-        $this->initHandle();
         return curl_getinfo($this->handle);
+    }
+
+    /**
+     * @return integer the response code
+     */
+    public function getResponseHTTPCode()
+    {
+        return curl_getinfo($this->handle, CURLINFO_HTTP_CODE);
+    }
+
+    /**
+     * @return string the potential error string
+     */
+    public function getErrorString()
+    {
+        return curl_error($this->handle);
+    }
+
+    /**
+     * @return int the error code
+     */
+    public function getErrorCode()
+    {
+        return curl_errno($this->handle);
     }
 
     /**
@@ -69,57 +92,7 @@ class Curl implements RequestInterface
      */
     protected function setOption($name, $value)
     {
-        $this->initHandle();
         curl_setopt($this->handle, $name, $value);
         return $this;
-    }
-
-
-//
-//    /**
-//     * Get curl info
-//     * @param $name
-//     * @return mixed
-//     */
-//    public function getInfo($name = null)
-//    {
-//        $this->initHandle();
-//        return curl_getinfo($this->handle, $name);
-//    }
-//
-//    /**
-//     * Close handle
-//     * @return $this
-//     */
-//    public function close()
-//    {
-//        if (!is_null($this->handle)) curl_close($this->handle);
-//        return $this;
-//    }
-//
-//    /**
-//     * @return string
-//     */
-//    public function getError()
-//    {
-//        $this->initHandle();
-//        return curl_error($this->handle);
-//    }
-//
-//    /**
-//     * @return int
-//     */
-//    public function getErrorNumber()
-//    {
-//        $this->initHandle();
-//        return curl_errno($this->handle);
-//    }
-
-    /**
-     * Lazy loading curl handle
-     */
-    protected function initHandle()
-    {
-        if (is_null($this->handle)) $this->handle = curl_init();
     }
 }
