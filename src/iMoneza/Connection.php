@@ -66,19 +66,34 @@ class Connection
      */
     public function request(OptionsAbstract $options)
     {
-        $url = $this->baseURLAccessAPI . $options->getEndPoint();
         $requestType = $options->getRequestType();
+        $endPoint = $options->getEndPoint();
+
+        $url = $this->baseURLAccessAPI . $endPoint;
+        $this->debug('URL', [$url]);
 
         $query = http_build_query($options->getPopulated());
         if ($requestType == OptionsAbstract::REQUEST_TYPE_GET && $query) {
             $url .= "?{$query}";
         }
+        $this->debug('Query', [$query]);
+
+        $this->debug('Set Full URL', [$url]);
+        $this->request->setUrl($url);
+
+        $timestamp = gmdate('D, d M Y H:i:s T', time());
+        $tokenValues = [
+            strtoupper($requestType),
+            $timestamp,
+            $endPoint,
+            $query
+        ];
+        $token = hash_hmac('sha256', implode("\n", $tokenValues), $this->secretKey);
+        $this->debug('Token created', [$token]);
+        $this->request->setAuthentication("{$this->apiKey}:{$token}")
+            ->setTimestamp($timestamp);
 
         $this->log->info("About to send to {$url} via {$requestType} with options of " . get_class($options));
-
-        $this->debug('Set URL', [$url]);
-        $this->request->setUrl($url);
-        $this->debug('Query', [$query]);
 
         $this->debug('Beginning request');
         $result = $this->request->execute();
@@ -129,8 +144,9 @@ class Connection
                 throw new Exception\AccessDenied($result, 403);
                 break;
             case 404:
-                $this->log->error($result, ['CODE'=>404]);
-                throw new Exception\NotFound($result, 404);
+                $error = json_decode($result);
+                $this->log->error($error->Message, ['CODE'=>404]);
+                throw new Exception\NotFound($error->Message, 404);
                 break;
         }
     }

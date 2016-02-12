@@ -22,6 +22,22 @@ interface RequestInterface
     public function setUrl($url);
 
     /**
+     * Sets the authentication token of this particular request
+     *
+     * @param $token
+     * @return $this
+     */
+    public function setAuthentication($token);
+
+    /**
+     * Sets the timestamp
+     *
+     * @param $timestamp
+     * @return $this
+     */
+    public function setTimestamp($timestamp);
+
+    /**
      * Runs the request
      * @return mixed
      */

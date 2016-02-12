@@ -19,6 +19,16 @@ class Curl implements RequestInterface
     protected $handle;
 
     /**
+     * @var string
+     */
+    protected $authentication;
+
+    /**
+     * @var string
+     */
+    protected $timestamp;
+
+    /**
      * Curl constructor.
      * Set default values
      */
@@ -41,11 +51,36 @@ class Curl implements RequestInterface
     }
 
     /**
+     * Sets the authentication for this request
+     *
+     * @param $authentication
+     * @return $this
+     */
+    public function setAuthentication($authentication)
+    {
+        $this->authentication = $authentication;
+        return $this;
+    }
+
+    /**
+     * Sets the timestamp for this request
+     *
+     * @param $timestamp
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+        return $this;
+    }
+
+    /**
      * Execute the request
      * @return bool|string
      */
     public function execute()
     {
+        $this->setOption(CURLOPT_HTTPHEADER, ["Accept: application/json", "Authenticate: {$this->authentication}", "Timestamp: {$this->timestamp}"]);
         return curl_exec($this->handle);
     }
 

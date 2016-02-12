@@ -52,7 +52,7 @@ class Resource extends OptionsAbstract
 
     /**
      * @param mixed $resourceKey
-     * @return Resource
+     * @return $this
      */
     public function setResourceKey($resourceKey)
     {
@@ -62,7 +62,7 @@ class Resource extends OptionsAbstract
 
     /**
      * @param mixed $resourceURL
-     * @return Resource
+     * @return $this
      */
     public function setResourceURL($resourceURL)
     {
@@ -72,7 +72,7 @@ class Resource extends OptionsAbstract
 
     /**
      * @param mixed $userToken
-     * @return Resource
+     * @return $this
      */
     public function setUserToken($userToken)
     {
@@ -82,7 +82,7 @@ class Resource extends OptionsAbstract
 
     /**
      * @param mixed $ipAddress
-     * @return Resource
+     * @return $this
      */
     public function setIpAddress($ipAddress)
     {
