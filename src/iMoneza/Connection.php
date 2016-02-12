@@ -7,6 +7,7 @@
 
 namespace iMoneza;
 use iMoneza\Exception;
+use iMoneza\Options\OptionsAbstract;
 use iMoneza\Request\RequestInterface;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
@@ -58,16 +59,26 @@ class Connection
     }
 
     /**
+     * @param OptionsAbstract $options
      * @return mixed
      * @throws Exception\AccessDenied
      * @throws Exception\TransferError
      */
-    public function request()
+    public function request(OptionsAbstract $options)
     {
-        $url = $this->baseURLAccessAPI;
+        $url = $this->baseURLAccessAPI . $options->getEndPoint();
+        $requestType = $options->getRequestType();
+
+        $query = http_build_query($options->getPopulated());
+        if ($requestType == OptionsAbstract::REQUEST_TYPE_GET && $query) {
+            $url .= "?{$query}";
+        }
+
+        $this->log->info("About to send to {$url} via {$requestType} with options of " . get_class($options));
 
         $this->debug('Set URL', [$url]);
         $this->request->setUrl($url);
+        $this->debug('Query', [$query]);
 
         $this->debug('Beginning request');
         $result = $this->request->execute();
@@ -82,7 +93,8 @@ class Connection
             throw new Exception\TransferError($message);
         }
 
-        $this->debug('All error checking passed - returning result.');
+        $this->debug('All error checking passed.');
+        $this->log->info("The request was successful.");
 
         return $result;
     }
@@ -99,6 +111,7 @@ class Connection
      * Handles a potential request error by throwing a useful exception
      * @param $result string|false
      * @throws Exception\AccessDenied
+     * @throws Exception\NotFound
      * @throws Exception\TransferError
      */
     protected function handleRequestError($result)
@@ -114,6 +127,10 @@ class Connection
             case 403:
                 $this->log->error($result, ['CODE'=>403]);
                 throw new Exception\AccessDenied($result, 403);
+                break;
+            case 404:
+                $this->log->error($result, ['CODE'=>404]);
+                throw new Exception\NotFound($result, 404);
                 break;
         }
     }
