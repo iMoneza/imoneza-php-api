@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="vendor/autoload.php" colors="true" verbose="true">
     <testsuites>
-        <testsuite name="iMoneza PHP Api Test Suite">
-            <directory>tests/iMoneza/</directory>
+        <testsuite name="UnitTest">
+            <directory>tests/iMoneza/UnitTest</directory>
+        </testsuite>
+        <testsuite name="IntegrationTest">
+            <directory>tests/iMoneza/IntegrationTest</directory>
         </testsuite>
     </testsuites>
     <filter>

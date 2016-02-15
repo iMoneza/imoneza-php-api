@@ -5,7 +5,7 @@
  * @author Aaron Saray
  */
 
-namespace iMoneza\Tests\Options;
+namespace iMoneza\UnitTest\Options;
 
 use iMoneza\Options\OptionsAbstract;
 

@@ -5,7 +5,7 @@
  * @author Aaron Saray
  */
 
-namespace iMoneza\Tests\Options\Access;
+namespace iMoneza\UnitTest\Options\Access;
 
 use iMoneza\Options\Access\Resource;
 
