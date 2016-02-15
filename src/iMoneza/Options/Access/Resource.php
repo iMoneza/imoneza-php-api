@@ -18,22 +18,22 @@ class Resource extends OptionsAbstract
     /**
      * @var string the access key for this request (private because not part of url) @todo might make this shared?
      */
-    private $accessKey;
+    private $accessKey = '';
 
     /**
      * @var string the resource key (private because part of URL)
      */
-    private $resourceKey;
+    private $resourceKey = '';
 
     /**
      * @var string the url of this resource
      */
-    protected $resourceURL;
+    protected $resourceURL = '';
 
     /**
      * @var string the user token
      */
-    protected $userToken;
+    protected $userToken = '';
 
     /**
      * @var string the IP address

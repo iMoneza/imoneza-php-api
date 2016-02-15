@@ -72,11 +72,14 @@ class Connection
         $url = $this->baseURLAccessAPI . $endPoint;
         $this->debug('URL', [$url]);
 
-        $query = http_build_query($options->getPopulated());
-        if ($requestType == OptionsAbstract::REQUEST_TYPE_GET && $query) {
-            $url .= "?{$query}";
+        $populatedValues = $options->getPopulated();
+        ksort($populatedValues);
+
+        $httpQuery = http_build_query($populatedValues);
+        if ($requestType == OptionsAbstract::REQUEST_TYPE_GET && $httpQuery) {
+            $url .= "?{$httpQuery}";
         }
-        $this->debug('Query', [$query]);
+        $this->debug('Query', [$httpQuery]);
 
         $this->debug('Set Full URL', [$url]);
         $this->request->setUrl($url);
@@ -85,9 +88,13 @@ class Connection
         $tokenValues = [
             strtoupper($requestType),
             $timestamp,
-            $endPoint,
-            $query
+            strtolower($endPoint),
+            implode('&', array_map(function($key, $value) {
+                return sprintf('%s=%s', strtolower($key), strtolower($value));
+            }, array_keys($populatedValues), $populatedValues))  // note: this is different because it can't be escaped - unlike the http_build_query which does - and need to be lower cased
         ];
+
+        $this->debug('Token values', $tokenValues);
         $token = hash_hmac('sha256', implode("\n", $tokenValues), $this->secretKey);
         $this->debug('Token created', [$token]);
         $this->request->setAuthentication("{$this->apiKey}:{$token}")
@@ -126,6 +133,7 @@ class Connection
      * Handles a potential request error by throwing a useful exception
      * @param $result string|false
      * @throws Exception\AccessDenied
+     * @throws Exception\AuthenticationFailure
      * @throws Exception\NotFound
      * @throws Exception\TransferError
      */
@@ -139,6 +147,10 @@ class Connection
         }
 
         switch ($this->request->getResponseHTTPCode()) {
+            case 401:
+                $this->log->error($result, ['CODE'=>401]);
+                throw new Exception\AuthenticationFailure($result, 401);
+                break;
             case 403:
                 $this->log->error($result, ['CODE'=>403]);
                 throw new Exception\AccessDenied($result, 403);
