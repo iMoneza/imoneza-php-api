@@ -38,7 +38,7 @@ class Resource extends OptionsAbstract
     /**
      * @var string the IP address
      */
-    protected $IP = '74.87.96.42';  // @todo actually get this
+    protected $IP = '';
 
     /**
      * @param string $accessKey
