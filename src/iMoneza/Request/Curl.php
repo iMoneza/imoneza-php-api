@@ -80,6 +80,7 @@ class Curl implements RequestInterface
      */
     public function execute()
     {
+        $this->setOption(CURLINFO_HEADER_OUT, true); // track outgoing headers too
         $this->setOption(CURLOPT_HTTPHEADER, ["Accept: application/json", "Authenticate: {$this->authentication}", "Timestamp: {$this->timestamp}"]);
         return curl_exec($this->handle);
     }
