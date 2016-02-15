@@ -46,7 +46,7 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
     public function testSetIpAddress()
     {
         $options = new Resource();
-        $this->assertInstanceOf('iMoneza\Options\Access\Resource', $options->setIpAddress('123.123.123.123'));
+        $this->assertInstanceOf('iMoneza\Options\Access\Resource', $options->setIP('123.123.123.123'));
         $this->assertAttributeEquals('123.123.123.123', 'ipAddress', $options);
     }
 

@@ -28,17 +28,17 @@ class Resource extends OptionsAbstract
     /**
      * @var string the url of this resource
      */
-    protected $resourceURL = '';
+    protected $ResourceURL = '';
 
     /**
      * @var string the user token
      */
-    protected $userToken = '';
+    protected $UserToken = '';
 
     /**
      * @var string the IP address
      */
-    protected $ipAddress;
+    protected $IP = '74.87.96.42';  // @todo actually get this
 
     /**
      * @param string $accessKey
@@ -61,32 +61,32 @@ class Resource extends OptionsAbstract
     }
 
     /**
-     * @param mixed $resourceURL
+     * @param mixed $ResourceURL
      * @return $this
      */
-    public function setResourceURL($resourceURL)
+    public function setResourceURL($ResourceURL)
     {
-        $this->resourceURL = $resourceURL;
+        $this->ResourceURL = $ResourceURL;
         return $this;
     }
 
     /**
-     * @param mixed $userToken
+     * @param mixed $UserToken
      * @return $this
      */
-    public function setUserToken($userToken)
+    public function setUserToken($UserToken)
     {
-        $this->userToken = $userToken;
+        $this->UserToken = $UserToken;
         return $this;
     }
 
     /**
-     * @param mixed $ipAddress
+     * @param mixed $IP
      * @return $this
      */
-    public function setIpAddress($ipAddress)
+    public function setIP($IP)
     {
-        $this->ipAddress = $ipAddress;
+        $this->IP = $IP;
         return $this;
     }
 
