@@ -95,7 +95,7 @@ class Connection
         ];
 
         $this->debug('Token values', $tokenValues);
-        $token = hash_hmac('sha256', implode("\n", $tokenValues), $this->secretKey);
+        $token = base64_encode(hash_hmac('sha256', implode("\n", $tokenValues), $this->secretKey, true));
         $this->debug('Token created', [$token]);
         $this->request->setAuthentication("{$this->apiKey}:{$token}")
             ->setTimestamp($timestamp);
