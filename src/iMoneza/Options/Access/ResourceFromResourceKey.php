@@ -10,10 +10,10 @@ namespace iMoneza\Options\Access;
 use iMoneza\Options\OptionsAbstract;
 
 /**
- * Class Resource
+ * Class ResourceFromResourceKey
  * @package iMoneza\Options\Access
  */
-class Resource extends OptionsAbstract
+class ResourceFromResourceKey extends OptionsAbstract
 {
     /**
      * @var string the access key for this request (private because not part of url) @todo might make this shared?
