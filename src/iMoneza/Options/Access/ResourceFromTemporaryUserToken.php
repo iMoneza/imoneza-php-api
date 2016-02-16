@@ -15,10 +15,7 @@ use iMoneza\Options\OptionsAbstract;
  */
 class ResourceFromTemporaryUserToken extends OptionsAbstract
 {
-    /**
-     * @var string the access key for this request (private because not part of get params)
-     */
-    private $accessKey = '';
+    use ConfigurationTrait;
 
     /**
      * @var string the resource key
@@ -39,50 +36,6 @@ class ResourceFromTemporaryUserToken extends OptionsAbstract
      * @var string the IP address
      */
     protected $IP = '';
-
-    /**
-     * @var string the base of the access api
-     */
-    private $apiBaseUrl = 'https://accessapi.imoneza.com';
-
-    /**
-     * Gets the base URL
-     * @return string
-     */
-    public function getApiBaseURL()
-    {
-        return $this->apiBaseUrl;
-    }
-
-    /**
-     * Set the URL
-     *
-     * @param $baseUrl
-     * @return $this
-     */
-    public function setApiBaseURL($baseUrl)
-    {
-        $this->apiBaseUrl;
-        return $this;
-    }
-
-    /**
-     * @param string $accessKey
-     * @return $this
-     */
-    public function setAccessKey($accessKey)
-    {
-        $this->accessKey = $accessKey;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasAccessKey()
-    {
-        return !empty($this->accessKey);
-    }
 
     /**
      * @param mixed $resourceKey

@@ -65,9 +65,7 @@ class TestOptions extends OptionsAbstract
      * @return string get the base URL
      */
     public function getApiBaseURL()
-    {
-        // TODO: Implement getApiBaseURL() method.
-    }
+    {}
 
     /**
      * Sets the base URL of the request
@@ -75,24 +73,18 @@ class TestOptions extends OptionsAbstract
      * @return mixed
      */
     public function setApiBaseURL($baseUrl)
-    {
-        // TODO: Implement setApiBaseURL() method.
-    }
+    {}
 
     /**
      * @param $accessKey
      * @return mixed
      */
     public function setAccessKey($accessKey)
-    {
-        // TODO: Implement setAccessKey() method.
-    }
+    {}
 
     /**
      * @return boolean
      */
     public function hasAccessKey()
-    {
-        // TODO: Implement hasAccessKey() method.
-    }
+    {}
 }
