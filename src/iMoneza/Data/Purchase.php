@@ -11,23 +11,12 @@ namespace iMoneza\Data;
  * Class Purchase
  * @package iMoneza\Data
  */
-class Purchase
+class Purchase extends DataAbstract
 {
     /**
      * @var boolean
      */
     protected $isPurchased;
-
-    /**
-     * Purchase constructor.
-     * @param array $values
-     */
-    public function __construct(array $values = [])
-    {
-        foreach ($values as $key => $value) {
-            $this->{'set' . $key}($value);
-        }
-    }
 
     /**
      * @return boolean

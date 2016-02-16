@@ -34,21 +34,9 @@ class Subscription
     protected $subscriptionGroupID;
 
     /**
-     * Subscription constructor.
-     * @param array $values
+     * @var array date time objects
      */
-    public function __construct(array $values = [])
-    {
-        foreach ($values as $key => $value) {
-            switch ($key) {
-                case 'ExpirationDate':
-                    $value = new \DateTime($value, new \DateTimeZone('UTC'));
-                    break;
-            }
-
-            $this->{'set' . $key}($value);
-        }
-    }
+    protected $dateTimeKeys = ['ExpirationDate'];
 
     /**
      * @return boolean
@@ -121,6 +109,4 @@ class Subscription
         $this->subscriptionGroupID = $subscriptionGroupID;
         return $this;
     }
-
-
 }

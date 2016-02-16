@@ -11,7 +11,7 @@ namespace iMoneza\Data;
  * Class Quota
  * @package iMoneza\Data
  */
-class Quota
+class Quota extends DataAbstract
 {
     /**
      * @var boolean
@@ -44,21 +44,9 @@ class Quota
     protected $isMet;
 
     /**
-     * Quota constructor.
-     * @param array $values
+     * @var array date time objects
      */
-    public function __construct(array $values = [])
-    {
-        foreach ($values as $key => $value) {
-            switch ($key) {
-                case 'PeriodStartDate':
-                    $value = new \DateTime($value, new \DateTimeZone('UTC'));
-                    break;
-            }
-
-            $this->{'set' . $key}($value);
-        }
-    }
+    protected $dateTimeKeys = ['PeriodStartDate'];
 
     /**
      * @return boolean

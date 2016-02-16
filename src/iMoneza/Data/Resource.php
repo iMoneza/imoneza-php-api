@@ -11,7 +11,7 @@ namespace iMoneza\Data;
  * Class Resource
  * @package iMoneza\Data
  */
-class Resource
+class Resource extends DataAbstract
 {
     /**
      * @var string
@@ -89,24 +89,9 @@ class Resource
     protected $accessActionUrl;
 
     /**
-     * Resource constructor.
-     * @param array $values
+     * @var array keys to create classes
      */
-    public function __construct(array $values = [])
-    {
-        foreach ($values as $key => $value) {
-            switch ($key) {
-                case 'Quota':
-                case 'Purchase':
-                case 'Subscription':
-                    $className = sprintf('%s\%s', __NAMESPACE__, $key);
-                    $value = new $className($value);
-                    break;
-            }
-
-            $this->{'set' . $key}($value);
-        }
-    }
+    protected $classKeys = ['Quota', 'Purchase', 'Subscription'];
 
     /**
      * @return string
@@ -323,6 +308,4 @@ class Resource
         $this->accessActionUrl = $accessActionUrl;
         return $this;
     }
-
-
 }
