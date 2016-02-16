@@ -16,6 +16,11 @@ use iMoneza\Options\OptionsAbstract;
 class ResourceFromResourceKey extends OptionsAbstract
 {
     /**
+     * @var string the access key for this request (private because not part of url) @todo might make this shared?
+     */
+    private $accessKey = '';
+
+    /**
      * @var string the resource key (private because part of URL)
      */
     private $resourceKey = '';
