@@ -16,11 +16,6 @@ use iMoneza\Options\OptionsAbstract;
 class ResourceFromResourceKey extends OptionsAbstract
 {
     /**
-     * @var string the access key for this request (private because not part of url) @todo might make this shared?
-     */
-    private $accessKey = '';
-
-    /**
      * @var string the resource key (private because part of URL)
      */
     private $resourceKey = '';
@@ -39,6 +34,32 @@ class ResourceFromResourceKey extends OptionsAbstract
      * @var string the IP address
      */
     protected $IP = '';
+
+    /**
+     * @var string the base of the access api
+     */
+    private $baseURLAccessAPI = 'https://accessapi.imoneza.com';
+
+    /**
+     * Gets the base URL
+     * @return string
+     */
+    public function getApiBaseURL()
+    {
+        return $this->baseURLAccessAPI;
+    }
+
+    /**
+     * Set the URL
+     *
+     * @param $baseUrl
+     * @return $this
+     */
+    public function setApiBaseURL($baseUrl)
+    {
+        $this->baseURLAccessAPI;
+        return $this;
+    }
 
     /**
      * @param string $accessKey

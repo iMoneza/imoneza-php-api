@@ -6,7 +6,7 @@
  */
 
 namespace iMoneza\Options;
-use iMoneza\Exception;;
+use iMoneza\Exception;
 
 /**
  * Class OptionsAbstract
@@ -35,6 +35,20 @@ abstract class OptionsAbstract
         }, []);
         return $properties;
     }
+
+    /**
+     * Gets the URL of the base request
+     *
+     * @return string get the base URL
+     */
+    abstract public function getApiBaseURL();
+
+    /**
+     * Sets the base URL of the request
+     * @param $baseUrl
+     * @return mixed
+     */
+    abstract public function setApiBaseURL($baseUrl);
 
     /**
      * @return mixed the custom URL for this request

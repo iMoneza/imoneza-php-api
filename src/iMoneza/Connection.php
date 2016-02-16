@@ -40,11 +40,6 @@ class Connection
     private $log;
 
     /**
-     * @var string the base of the access api
-     */
-    protected $baseURLAccessAPI = 'https://accessapi.imoneza.com';
-
-    /**
      * Connection constructor.
      * @param $apiKey string
      * @param $secretKey string
@@ -67,10 +62,12 @@ class Connection
      */
     public function request(OptionsAbstract $options)
     {
+        $options->setAccessKey($this->apiKey); // todo figure this out better?
+
         $requestType = $options->getRequestType();
         $endPoint = $options->getEndPoint();
 
-        $url = $this->baseURLAccessAPI . $endPoint;
+        $url = $options->getApiBaseURL() . $endPoint;
         $this->debug('URL', [$url]);
 
         $populatedValues = $options->getPopulated();
