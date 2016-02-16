@@ -155,9 +155,16 @@ class Connection
                 throw new Exception\AccessDenied($result, 403);
                 break;
             case 404:
-                $error = json_decode($result);
-                $this->log->error($error->Message, ['CODE'=>404]);
-                throw new Exception\NotFound($error->Message, 404);
+                //sometimes it's a json string, sometimes it's not... so there's that.
+                if (stripos($result, '{') === 0) {
+                    $error = json_decode($result);
+                    $errorMessage = $error->Message;
+                }
+                else {
+                    $errorMessage = $result;
+                }
+                $this->log->error($errorMessage, ['CODE'=>404]);
+                throw new Exception\NotFound($errorMessage, 404);
                 break;
         }
     }

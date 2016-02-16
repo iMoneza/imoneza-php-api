@@ -8,10 +8,9 @@
 namespace iMoneza\IntegrationTest;
 
 
-use iMoneza\Data\Resource;
 use iMoneza\Helper;
 
-class ResourceAccessTest extends \PHPUnit_Framework_TestCase
+class AccessResourceFromResourceKeyTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \iMoneza\Connection
@@ -48,14 +47,5 @@ class ResourceAccessTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\iMoneza\Data\Resource', $result);
 
         return $result;
-    }
-
-    /**
-     * @depends testGetResourceFromResourceKey
-     */
-    public function testGetResourceFromTemporaryKey(Resource $previousRequestResource)
-    {
-        $this->assertInstanceOf('\iMoneza\Data\Resource', $previousRequestResource);
-
     }
 }

@@ -10,10 +10,10 @@ namespace iMoneza\Options\Access;
 use iMoneza\Options\OptionsAbstract;
 
 /**
- * Class ResourceFromResourceKey
+ * Class ResourceFromTemporaryUserToken
  * @package iMoneza\Options\Access
  */
-class ResourceFromResourceKey extends OptionsAbstract
+class ResourceFromTemporaryUserToken extends OptionsAbstract
 {
     /**
      * @var string the access key for this request (private because not part of get params)
@@ -21,9 +21,9 @@ class ResourceFromResourceKey extends OptionsAbstract
     private $accessKey = '';
 
     /**
-     * @var string the resource key (private because part of get params)
+     * @var string the resource key
      */
-    private $resourceKey = '';
+    protected $ResourceKey = '';
 
     /**
      * @var string the url of this resource
@@ -33,7 +33,7 @@ class ResourceFromResourceKey extends OptionsAbstract
     /**
      * @var string the user token
      */
-    protected $UserToken = '';
+    protected $temporaryUserToken = '';
 
     /**
      * @var string the IP address
@@ -90,7 +90,7 @@ class ResourceFromResourceKey extends OptionsAbstract
      */
     public function setResourceKey($resourceKey)
     {
-        $this->resourceKey = $resourceKey;
+        $this->ResourceKey = $resourceKey;
         return $this;
     }
 
@@ -105,12 +105,12 @@ class ResourceFromResourceKey extends OptionsAbstract
     }
 
     /**
-     * @param mixed $UserToken
+     * @param string $temporaryUserToken
      * @return $this
      */
-    public function setUserToken($UserToken)
+    public function setTemporaryUserToken($temporaryUserToken)
     {
-        $this->UserToken = $UserToken;
+        $this->temporaryUserToken = $temporaryUserToken;
         return $this;
     }
 
@@ -129,7 +129,7 @@ class ResourceFromResourceKey extends OptionsAbstract
      */
     public function getEndPoint()
     {
-        return "/api/Resource/{$this->accessKey}/{$this->resourceKey}";
+        return "/api/TemporaryUserToken/{$this->accessKey}/{$this->temporaryUserToken}";
     }
 
     /**
