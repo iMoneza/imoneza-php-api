@@ -6,6 +6,7 @@
  */
 
 namespace iMoneza;
+use iMoneza\Data\Resource;
 use iMoneza\Exception;
 use iMoneza\Options\OptionsAbstract;
 use iMoneza\Request\RequestInterface;
@@ -84,7 +85,7 @@ class Connection
         $this->debug('Set Full URL', [$url]);
         $this->request->setUrl($url);
 
-        $timestamp = gmdate('D, d M Y H:i:s T', time());
+        $timestamp = gmdate('D, d M Y H:i:s T');
         $tokenValues = [
             strtoupper($requestType),
             $timestamp,
@@ -118,7 +119,8 @@ class Connection
         $this->debug('All error checking passed.');
         $this->log->info("The request was successful.");
 
-        return $result;
+        $jsonArray = json_decode($result, true); // @todo catch errors
+        return new Resource($jsonArray);
     }
 
     /**

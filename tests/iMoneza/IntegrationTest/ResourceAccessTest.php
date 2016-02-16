@@ -8,6 +8,8 @@
 namespace iMoneza\IntegrationTest;
 
 
+use iMoneza\Helper;
+
 class ResourceAccessTest extends \PHPUnit_Framework_TestCase
 {
     public static function setUpBeforeClass()
@@ -29,11 +31,12 @@ class ResourceAccessTest extends \PHPUnit_Framework_TestCase
         $connection->setBaseURLAccessAPI(getenv('API_URL')); // only for testing
 
         $options = new \iMoneza\Options\Access\Resource();
-        $options->setAccessKey($apiKey)->setResourceKey('81')->setIP('127.0.0.1')
+        $options->setAccessKey($apiKey)->setResourceKey('81')->setIP(Helper::getCurrentIP())
             ->setResourceURL('http://imonezajournal.com/2015/02/02/candidate-visits-local-business/');
 
         $result = $connection->request($options);
 
-        $this->assertTrue($result);
+        $this->assertNotEmpty($result);
+        $this->assertInstanceOf('\iMoneza\Data\Resource', $result);
     }
 }
