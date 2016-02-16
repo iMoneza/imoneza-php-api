@@ -62,7 +62,7 @@ class Connection
      */
     public function request(OptionsAbstract $options)
     {
-        $options->setAccessKey($this->apiKey); // todo figure this out better?
+        if (!$options->hasAccessKey()) $options->setAccessKey($this->apiKey);
 
         $requestType = $options->getRequestType();
         $endPoint = $options->getEndPoint();

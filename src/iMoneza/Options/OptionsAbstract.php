@@ -51,6 +51,17 @@ abstract class OptionsAbstract
     abstract public function setApiBaseURL($baseUrl);
 
     /**
+     * @param $accessKey
+     * @return mixed
+     */
+    abstract public function setAccessKey($accessKey);
+
+    /**
+     * @return boolean
+     */
+    abstract public function hasAccessKey();
+
+    /**
      * @return mixed the custom URL for this request
      */
     abstract public function getEndPoint();

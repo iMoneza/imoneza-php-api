@@ -16,12 +16,12 @@ use iMoneza\Options\OptionsAbstract;
 class ResourceFromResourceKey extends OptionsAbstract
 {
     /**
-     * @var string the access key for this request (private because not part of url) @todo might make this shared?
+     * @var string the access key for this request (private because not part of get params)
      */
     private $accessKey = '';
 
     /**
-     * @var string the resource key (private because part of URL)
+     * @var string the resource key (private because part of get params)
      */
     private $resourceKey = '';
 
@@ -74,6 +74,14 @@ class ResourceFromResourceKey extends OptionsAbstract
     {
         $this->accessKey = $accessKey;
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasAccessKey()
+    {
+        return !empty($this->accessKey);
     }
 
     /**
