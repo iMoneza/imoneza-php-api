@@ -24,10 +24,11 @@ abstract class DataAbstract
     protected $classKeys = [];
 
     /**
-     * Data constructor.
+     * Populate the class
      * @param array $values
+     * @return $this
      */
-    public function __construct(array $values = [])
+    public function populate(array $values = [])
     {
         foreach ($values as $key => $value) {
             if (in_array($key, $this->dateTimeKeys)) {
@@ -39,5 +40,7 @@ abstract class DataAbstract
             }
             $this->{'set' . $key}($value);
         }
+
+        return $this;
     }
 }

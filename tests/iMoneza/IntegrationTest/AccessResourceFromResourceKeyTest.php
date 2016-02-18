@@ -8,6 +8,7 @@
 namespace iMoneza\IntegrationTest;
 
 
+use iMoneza\Data\Resource;
 use iMoneza\Helper;
 
 class AccessResourceFromResourceKeyTest extends \PHPUnit_Framework_TestCase
@@ -41,11 +42,10 @@ class AccessResourceFromResourceKeyTest extends \PHPUnit_Framework_TestCase
         $options->setResourceKey('81')->setIP(Helper::getCurrentIP())
             ->setResourceURL('http://imonezajournal.com/2015/02/02/candidate-visits-local-business/');
 
-        $result = $this->connection->request($options);
+        $data = new Resource();
+        $result = $this->connection->request($options, $data);
 
         $this->assertNotEmpty($result);
         $this->assertInstanceOf('\iMoneza\Data\Resource', $result);
-
-        return $result;
     }
 }

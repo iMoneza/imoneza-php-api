@@ -6,6 +6,7 @@
  */
 
 namespace iMoneza;
+use iMoneza\Data\DataAbstract;
 use iMoneza\Data\Resource;
 use iMoneza\Exception;
 use iMoneza\Options\OptionsAbstract;
@@ -56,14 +57,15 @@ class Connection
 
     /**
      * @param OptionsAbstract $options
-     * @return mixed
+     * @param DataAbstract $dataObject
+     * @return DataAbstract
      * @throws Exception\AccessDenied
      * @throws Exception\AuthenticationFailure
      * @throws Exception\DecodingError
      * @throws Exception\NotFound
      * @throws Exception\TransferError
      */
-    public function request(OptionsAbstract $options)
+    public function request(OptionsAbstract $options, DataAbstract $dataObject)
     {
         if (!$options->hasAccessKey()) $options->setAccessKey($this->apiKey);
 
@@ -123,7 +125,7 @@ class Connection
         if (is_null($jsonArray)) {
             throw new Exception\DecodingError(json_last_error_msg(), json_last_error());
         }
-        return new Resource($jsonArray);
+        return $dataObject->populate($jsonArray);
     }
 
     /**

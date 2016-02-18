@@ -7,6 +7,7 @@
 
 namespace iMoneza\Options\Access;
 
+use iMoneza\Options\ConfigurationTrait;
 use iMoneza\Options\OptionsAbstract;
 
 /**
@@ -15,7 +16,7 @@ use iMoneza\Options\OptionsAbstract;
  */
 class ResourceFromResourceKey extends OptionsAbstract
 {
-    use ConfigurationTrait;
+    use ConfigurationTrait, AccessConfigurationTrait;
 
     /**
      * @var string the resource key (private because part of get params)

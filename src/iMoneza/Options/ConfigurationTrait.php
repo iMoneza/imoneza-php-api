@@ -5,11 +5,11 @@
  * @author Aaron Saray
  */
 
-namespace iMoneza\Options\Access;
+namespace iMoneza\Options;
 
 /**
  * Class ConfigurationTrait
- * @package iMoneza\Options\Access
+ * @package iMoneza\Options
  */
 trait ConfigurationTrait
 {
@@ -17,11 +17,6 @@ trait ConfigurationTrait
      * @var string the access key for this request
      */
     private $accessKey = '';
-
-    /**
-     * @var string the base of the access api
-     */
-    private $apiBaseUrl = 'https://accessapi.imoneza.com';
 
     /**
      * Gets the base URL

@@ -15,11 +15,11 @@
   "require": {
     "php": ">=5.4.0",
     "lib-curl": ">=7.0",
-    "monolog/monolog": ">=1.17",
-    "vlucas/phpdotenv": "^2.2"
+    "monolog/monolog": ">=1.17"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.5"
+    "phpunit/phpunit": "~4.5",
+    "vlucas/phpdotenv": "^2.2"
   },
   "autoload": {
     "psr-4": {"iMoneza\\": "src/iMoneza"}
