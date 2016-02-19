@@ -16,7 +16,7 @@ use iMoneza\Options\OptionsAbstract;
  */
 class Property extends OptionsAbstract
 {
-    use ConfigurationTrait;
+    use ConfigurationTrait, ManagementConfigurationTrait;
 
     /**
      * @return string
