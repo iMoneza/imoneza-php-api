@@ -13,5 +13,5 @@ namespace iMoneza\Exception;
  * Class DecodingError
  * @package iMoneza\Exception
  */
-class DecodingError extends \Exception
+class DecodingError extends iMoneza
 {}

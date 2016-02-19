@@ -11,5 +11,5 @@ namespace iMoneza\Exception;
  * Class AccessDenied
  * @package iMoneza\Exception
  */
-class AccessDenied extends \Exception
+class AccessDenied extends iMoneza
 {}

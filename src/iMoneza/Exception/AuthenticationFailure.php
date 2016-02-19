@@ -11,5 +11,5 @@ namespace iMoneza\Exception;
  * Class AuthenticationFailure
  * @package iMoneza\Exception
  */
-class AuthenticationFailure extends \Exception
+class AuthenticationFailure extends iMoneza
 {}

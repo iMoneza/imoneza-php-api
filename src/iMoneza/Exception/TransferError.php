@@ -12,5 +12,5 @@ namespace iMoneza\Exception;
  * Class TransferError
  * @package iMoneza\Exception
  */
-class TransferError extends \Exception
+class TransferError extends iMoneza
 {}

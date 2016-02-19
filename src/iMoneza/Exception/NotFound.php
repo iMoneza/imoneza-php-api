@@ -11,5 +11,5 @@ namespace iMoneza\Exception;
  * Class NotFound
  * @package iMoneza\Exception
  */
-class NotFound extends \Exception
+class NotFound extends iMoneza
 {}
