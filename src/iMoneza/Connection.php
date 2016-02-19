@@ -9,6 +9,7 @@ namespace iMoneza;
 use iMoneza\Data\DataAbstract;
 use iMoneza\Data\Resource;
 use iMoneza\Exception;
+use iMoneza\Options\Access\AccessInterface;
 use iMoneza\Options\OptionsAbstract;
 use iMoneza\Request\RequestInterface;
 use Monolog\Logger;
@@ -23,12 +24,22 @@ class Connection
     /**
      * @var string
      */
-    private $apiKey;
+    private $accessApiKey;
 
     /**
      * @var string
      */
-    private $secretKey;
+    private $accessApiSecret;
+
+    /**
+     * @var string
+     */
+    private $manageApiKey;
+
+    /**
+     * @var string
+     */
+    private $manageApiSecret;
 
     /**
      * @var RequestInterface
@@ -42,15 +53,19 @@ class Connection
 
     /**
      * Connection constructor.
-     * @param $apiKey string
-     * @param $secretKey string
+     * @param $manageApiKey
+     * @param $manageApiSecret
+     * @param $accessApiKey
+     * @param $accessApiSecret
      * @param RequestInterface $request
      * @param LoggerInterface $log
      */
-    public function __construct($apiKey, $secretKey, RequestInterface $request, LoggerInterface $log)
+    public function __construct($manageApiKey, $manageApiSecret, $accessApiKey, $accessApiSecret, RequestInterface $request, LoggerInterface $log)
     {
-        $this->apiKey = $apiKey;
-        $this->secretKey = $secretKey;
+        $this->manageApiKey = $manageApiKey;
+        $this->manageApiSecret = $manageApiSecret;
+        $this->accessApiKey = $accessApiKey;
+        $this->accessApiSecret = $accessApiSecret;
         $this->request = $request;
         $this->log = $log;
     }
@@ -67,7 +82,10 @@ class Connection
      */
     public function request(OptionsAbstract $options, DataAbstract $dataObject)
     {
-        if (!$options->hasAccessKey()) $options->setAccessKey($this->apiKey);
+        $apiKey = ($options instanceof AccessInterface ? $this->accessApiKey : $this->manageApiKey);
+        $apiSecret = ($options instanceof AccessInterface ? $this->accessApiSecret : $this->manageApiSecret);
+
+        if (!$options->hasAccessKey()) $options->setAccessKey($apiKey);
 
         $requestType = $options->getRequestType();
         $endPoint = $options->getEndPoint();
@@ -98,9 +116,9 @@ class Connection
         ];
 
         $this->debug('Token values', $tokenValues);
-        $token = base64_encode(hash_hmac('sha256', implode("\n", $tokenValues), $this->secretKey, true));
+        $token = base64_encode(hash_hmac('sha256', implode("\n", $tokenValues), $apiSecret, true));
         $this->debug('Token created', [$token]);
-        $this->request->setAuthentication("{$this->apiKey}:{$token}")
+        $this->request->setAuthentication("{$apiKey}:{$token}")
             ->setTimestamp($timestamp);
 
         $this->log->info("About to send to {$url} via {$requestType} with options of " . get_class($options));

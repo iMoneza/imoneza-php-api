@@ -14,7 +14,7 @@ use iMoneza\Options\OptionsAbstract;
  * Class Property
  * @package iMoneza\Options\Management
  */
-class Property extends OptionsAbstract
+class Property extends OptionsAbstract implements ManagementInterface
 {
     use ConfigurationTrait, ManagementConfigurationTrait;
 

@@ -14,7 +14,7 @@ use iMoneza\Options\OptionsAbstract;
  * Class ResourceFromResourceKey
  * @package iMoneza\Options\Access
  */
-class ResourceFromResourceKey extends OptionsAbstract
+class ResourceFromResourceKey extends OptionsAbstract implements AccessInterface
 {
     use ConfigurationTrait, AccessConfigurationTrait;
 

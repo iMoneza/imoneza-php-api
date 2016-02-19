@@ -23,13 +23,15 @@ class GetPropertyDetailsTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        $accessApiKey = getenv('ACCESS_API_KEY');
+        $accessSecretKey = getenv('ACCESS_API_SECRET');
         $apiKey = getenv('MANAGEMENT_API_KEY');
         $secretKey = getenv('MANAGEMENT_API_SECRET');
 
         $logger = new \Monolog\Logger('test');
         $logger->pushHandler(new \Monolog\Handler\StreamHandler('php://stdout'));
 
-        $this->connection = new \iMoneza\Connection($apiKey, $secretKey, new \iMoneza\Request\Curl(), $logger);
+        $this->connection = new \iMoneza\Connection($apiKey, $secretKey, $accessApiKey, $accessSecretKey, new \iMoneza\Request\Curl(), $logger);
     }
 
     public function testGetPropertyData()

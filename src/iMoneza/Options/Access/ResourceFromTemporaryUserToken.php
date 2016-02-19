@@ -14,7 +14,7 @@ use iMoneza\Options\OptionsAbstract;
  * Class ResourceFromTemporaryUserToken
  * @package iMoneza\Options\Access
  */
-class ResourceFromTemporaryUserToken extends OptionsAbstract
+class ResourceFromTemporaryUserToken extends OptionsAbstract implements AccessInterface
 {
     use ConfigurationTrait, AccessConfigurationTrait;
 
