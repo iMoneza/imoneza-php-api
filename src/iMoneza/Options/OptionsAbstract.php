@@ -15,14 +15,14 @@ use iMoneza\Exception;
 abstract class OptionsAbstract
 {
     /**
-     * @var string this is a post method
-     */
-    const REQUEST_TYPE_POST = 'post';
-
-    /**
      * @var string this is a get method
      */
     const REQUEST_TYPE_GET = 'get';
+
+    /**
+     * @var string the put method
+     */
+    const REQUEST_TYPE_PUT = 'put';
 
     /**
      * @return array the populated array of elements from this set of options (note, private vars are not included - yay!)

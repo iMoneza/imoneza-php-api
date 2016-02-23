@@ -1,6 +1,6 @@
 <?php
 /**
- * Tests getting the resource
+ * Tests putting the resource
  *
  * @author Aaron Saray
  */
@@ -8,10 +8,7 @@
 namespace iMoneza\IntegrationTest;
 
 
-use iMoneza\Data\Resource;
-use iMoneza\Helper;
-
-class AccessResourceFromResourceKeyTest extends \PHPUnit_Framework_TestCase
+class PutTheResourceTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \iMoneza\Connection
@@ -37,17 +34,19 @@ class AccessResourceFromResourceKeyTest extends \PHPUnit_Framework_TestCase
         $this->connection = new \iMoneza\Connection($apiKey, $secretKey, $accessApiKey, $accessSecretKey, new \iMoneza\Request\Curl(), $logger);
     }
 
-    public function testGetResourceFromResourceKey()
+    public function testPutResource()
     {
-        $options = new \iMoneza\Options\Access\ResourceFromResourceKey();
-        $options->setApiBaseURL(getenv('ACCESS_API_URL')); // only for testing
-        $options->setResourceKey('x')->setIP(Helper::getCurrentIP())
-            ->setResourceURL('x');
+        $options = new \iMoneza\Options\Management\SaveResource();
+        $options->setApiBaseURL(getenv('MANAGEMENT_API_URL')); // only for testing
 
-        $data = new Resource();
-        $result = $this->connection->request($options, $data);
+        $externalId = uniqid();
+        $name = 'NAME:' . $externalId;
+        $title = 'TITLE:' . $externalId;
+        $options->setExternalKey($externalId)->setName($name)->setTitle($title);
 
-        $this->assertNotEmpty($result);
-        $this->assertInstanceOf('\iMoneza\Data\Resource', $result);
+        $result = $this->connection->request($options, new \iMoneza\Data\Property());  // temp
+
+        var_dump($result);
+
     }
 }

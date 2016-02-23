@@ -22,6 +22,15 @@ interface RequestInterface
     public function setUrl($url);
 
     /**
+     * Sets the request type
+     *
+     * @param $requestType
+     * @param $payload string
+     * @return RequestInterface
+     */
+    public function setRequestTypeAndPayload($requestType, $payload = '');
+
+    /**
      * Sets the authentication token of this particular request
      *
      * @param $token

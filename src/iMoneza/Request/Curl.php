@@ -51,6 +51,27 @@ class Curl implements RequestInterface
     }
 
     /**
+     * Sets the type - and the payload (if its used)
+     *
+     * @param $requestType
+     * @param $payload
+     * @return $this
+     */
+    public function setRequestTypeAndPayload($requestType, $payload = '')
+    {
+        if ($requestType != 'get') {
+            $this->setOption(CURLOPT_POSTFIELDS, $payload);
+            if ($requestType == 'post') {
+                $this->setOption(CURLOPT_POST, true);
+            }
+            else {
+                $this->setOption(CURLOPT_CUSTOMREQUEST, strtoupper($requestType));
+            }
+        }
+        return $this;
+    }
+
+    /**
      * Sets the authentication for this request
      *
      * @param $authentication

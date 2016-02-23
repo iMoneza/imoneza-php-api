@@ -100,6 +100,7 @@ class Connection
         if ($requestType == OptionsAbstract::REQUEST_TYPE_GET && $httpQuery) {
             $url .= "?{$httpQuery}";
         }
+        $this->request->setRequestTypeAndPayload($requestType, $httpQuery);
         $this->debug('Query', [$httpQuery]);
 
         $this->debug('Set Full URL', [$url]);
@@ -109,11 +110,16 @@ class Connection
         $tokenValues = [
             strtoupper($requestType),
             $timestamp,
-            strtolower($endPoint),
-            implode('&', array_map(function($key, $value) {
-                return sprintf('%s=%s', strtolower($key), strtolower($value));
-            }, array_keys($populatedValues), $populatedValues))  // note: this is different because it can't be escaped - unlike the http_build_query which does - and need to be lower cased
+            strtolower($endPoint)
         ];
+        if ($requestType == 'get') {
+            $tokenValues[] = implode('&', array_map(function($key, $value) {
+                return sprintf('%s=%s', strtolower($key), strtolower($value));
+            }, array_keys($populatedValues), $populatedValues));  // note: this is different because it can't be escaped - unlike the http_build_query which does - and need to be lower cased
+        }
+        else {
+            $tokenValues[] = ''; // for non-get we don't send any parameters, but we need this for the new line...
+        }
 
         $this->debug('Token values', $tokenValues);
         $token = base64_encode(hash_hmac('sha256', implode("\n", $tokenValues), $apiSecret, true));
