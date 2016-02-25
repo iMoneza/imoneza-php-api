@@ -21,7 +21,7 @@ class Property extends DataAbstract
     /**
      * @var array the keys that are converted to models
      */
-    protected $arrayClassKeys = ['pricingGroups'=>'PricingGroup'];
+    protected $arrayClassKeys = ['PricingGroups'=>'PricingGroup'];
 
     /**
      * @var string
@@ -76,12 +76,12 @@ class Property extends DataAbstract
     /**
      * @var array
      */
-    protected $subscriptionGroups;
+    protected $SubscriptionGroups;
 
     /**
      * @var array
      */
-    protected $pricingGroups;
+    protected $PricingGroups;
 
     /**
      * @return string
@@ -250,16 +250,16 @@ class Property extends DataAbstract
      */
     public function getSubscriptionGroups()
     {
-        return $this->subscriptionGroups;
+        return $this->SubscriptionGroups;
     }
 
     /**
-     * @param array $subscriptionGroups
+     * @param array $SubscriptionGroups
      * @return Property
      */
-    public function setSubscriptionGroups($subscriptionGroups)
+    public function setSubscriptionGroups($SubscriptionGroups)
     {
-        $this->subscriptionGroups = $subscriptionGroups;
+        $this->SubscriptionGroups = $SubscriptionGroups;
         return $this;
     }
 
@@ -268,16 +268,16 @@ class Property extends DataAbstract
      */
     public function getPricingGroups()
     {
-        return $this->pricingGroups;
+        return $this->PricingGroups;
     }
 
     /**
-     * @param array $pricingGroups
+     * @param array $PricingGroups
      * @return Property
      */
-    public function setPricingGroups($pricingGroups)
+    public function setPricingGroups($PricingGroups)
     {
-        $this->pricingGroups = $pricingGroups;
+        $this->PricingGroups = $PricingGroups;
         return $this;
     }
 

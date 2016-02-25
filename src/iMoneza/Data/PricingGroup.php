@@ -66,7 +66,7 @@ class PricingGroup extends DataAbstract
     /**
      * @var float
      */
-    protected $TargetConversionPricingFloor;
+    protected $TargetConversionPriceFloor;
 
     /**
      * @var int
@@ -220,18 +220,18 @@ class PricingGroup extends DataAbstract
     /**
      * @return float
      */
-    public function getTargetConversionPricingFloor()
+    public function getTargetConversionPriceFloor()
     {
-        return $this->TargetConversionPricingFloor;
+        return $this->TargetConversionPriceFloor;
     }
 
     /**
-     * @param float $TargetConversionPricingFloor
+     * @param float $TargetConversionPriceFloor
      * @return PricingGroup
      */
-    public function setTargetConversionPricingFloor($TargetConversionPricingFloor)
+    public function setTargetConversionPriceFloor($TargetConversionPriceFloor)
     {
-        $this->TargetConversionPricingFloor = $TargetConversionPricingFloor;
+        $this->TargetConversionPriceFloor = $TargetConversionPriceFloor;
         return $this;
     }
 

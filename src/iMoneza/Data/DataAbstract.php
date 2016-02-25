@@ -40,15 +40,19 @@ abstract class DataAbstract
                 $value = new \DateTime($value, new \DateTimeZone('UTC'));
             }
             elseif (in_array($key, $this->classKeys)) {
+                $populateValue = $value;
                 $className = sprintf('%s\%s', __NAMESPACE__, $key);
-                $value = new $className($value);
+                $value = new $className();
+                $value->populate($populateValue);
             }
-            elseif (in_array($key, $this->arrayClassKeys)) {
+            elseif (array_key_exists($key, $this->arrayClassKeys)) {
                 $arrayValues = $value;
                 $value = [];
                 $className = sprintf('%s\%s', __NAMESPACE__, $this->arrayClassKeys[$key]);
                 foreach ($arrayValues as $v) {
-                    $value[] = new $className($v);
+                    $class = new $className();
+                    $class->populate($v);
+                    $value[] = $class;
                 }
             }
             $this->{'set' . $key}($value);

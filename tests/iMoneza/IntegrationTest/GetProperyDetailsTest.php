@@ -43,5 +43,6 @@ class GetPropertyDetailsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNotEmpty($result);
         $this->assertInstanceOf('\iMoneza\Data\Property', $result);
+
     }
 }
