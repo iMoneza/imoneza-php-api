@@ -95,13 +95,22 @@ class Connection
 
         $populatedValues = $options->getPopulated();
         ksort($populatedValues);
+        $this->debug('Parameters', [$populatedValues]);
+        $payload = '';
 
-        $httpQuery = http_build_query($populatedValues);
-        if ($requestType == OptionsAbstract::REQUEST_TYPE_GET && $httpQuery) {
+        if ($requestType == OptionsAbstract::REQUEST_TYPE_GET && !empty($populatedValues)) {
+            $httpQuery = http_build_query($populatedValues);
             $url .= "?{$httpQuery}";
+            $this->debug('Get query', [$httpQuery]);
+            $payload = $httpQuery;
         }
-        $this->request->setRequestTypeAndPayload($requestType, $httpQuery);
-        $this->debug('Query', [$httpQuery]);
+        else {
+            $json = json_encode($populatedValues);
+            $this->debug('Json payload', [$json]);
+            $payload = $json;
+        }
+
+        $this->request->setRequestTypeAndPayload($requestType, $payload);
 
         $this->debug('Set Full URL', [$url]);
         $this->request->setUrl($url);
@@ -112,7 +121,7 @@ class Connection
             $timestamp,
             strtolower($endPoint)
         ];
-        if ($requestType == 'get') {
+        if ($requestType == OptionsAbstract::REQUEST_TYPE_GET) {
             $tokenValues[] = implode('&', array_map(function($key, $value) {
                 return sprintf('%s=%s', strtolower($key), strtolower($value));
             }, array_keys($populatedValues), $populatedValues));  // note: this is different because it can't be escaped - unlike the http_build_query which does - and need to be lower cased

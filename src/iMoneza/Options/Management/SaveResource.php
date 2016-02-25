@@ -21,24 +21,39 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
     /**
      * @var string the external key to use for this reference
      */
-    protected $externalKey;
+    protected $ExternalKey;
 
     /**
      * @var string the internal name
      */
-    protected $name;
+    protected $Name;
 
     /**
      * @var string the title of the item
      */
-    protected $title;
+    protected $Title;
+
+    /**
+     * @var array formatted pricing group property for this request
+     */
+    protected $PricingGroup;
+
+    /**
+     * @param $pricingGroupId
+     * @return $this
+     */
+    public function setPricingGroupId($pricingGroupId)
+    {
+        $this->PricingGroup = ['PricingGroupID'=>$pricingGroupId];
+        return $this;
+    }
 
     /**
      * @return string
      */
     public function getExternalKey()
     {
-        return $this->externalKey;
+        return $this->ExternalKey;
     }
 
     /**
@@ -47,7 +62,7 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
      */
     public function setExternalKey($externalKey)
     {
-        $this->externalKey = $externalKey;
+        $this->ExternalKey = $externalKey;
         return $this;
     }
 
@@ -56,7 +71,7 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
      */
     public function getName()
     {
-        return $this->name;
+        return $this->Name;
     }
 
     /**
@@ -65,7 +80,7 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->Name = $name;
         return $this;
     }
 
@@ -74,7 +89,7 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
      */
     public function getTitle()
     {
-        return $this->title;
+        return $this->Title;
     }
 
     /**
@@ -83,7 +98,7 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->Title = $title;
         return $this;
     }
 
@@ -92,7 +107,7 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
      */
     public function getEndPoint()
     {
-        return "/api/Property/{$this->accessKey}/Resource/{$this->externalKey}";
+        return "/api/Property/{$this->accessKey}/Resource/{$this->ExternalKey}";
     }
 
     /**

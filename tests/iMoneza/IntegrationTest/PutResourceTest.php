@@ -42,11 +42,10 @@ class PutTheResourceTest extends \PHPUnit_Framework_TestCase
         $externalId = uniqid();
         $name = 'NAME:' . $externalId;
         $title = 'TITLE:' . $externalId;
-        $options->setExternalKey($externalId)->setName($name)->setTitle($title);
+        $options->setExternalKey($externalId)->setName($name)->setTitle($title)->setPricingGroupId('b527e274-5ae1-425f-ad8f-320dd369452d');
 
-        $result = $this->connection->request($options, new \iMoneza\Data\Property());  // temp
-
-        var_dump($result);
-
+        $result = $this->connection->request($options, new \iMoneza\Data\None());
+        $this->assertNotEmpty($result);
+        $this->assertInstanceOf('iMonezaPRO\Data\None', $result);
     }
 }
