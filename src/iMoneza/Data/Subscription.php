@@ -11,7 +11,7 @@ namespace iMoneza\Data;
  * Class Subscription
  * @package iMoneza\Data
  */
-class Subscription
+class Subscription extends DataAbstract
 {
     /**
      * @var boolean
