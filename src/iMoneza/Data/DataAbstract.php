@@ -24,6 +24,11 @@ abstract class DataAbstract
     protected $classKeys = [];
 
     /**
+     * @var array keys to create array of classes
+     */
+    protected $arrayClassKeys = [];
+
+    /**
      * Populate the class
      * @param array $values
      * @return $this
@@ -37,6 +42,14 @@ abstract class DataAbstract
             elseif (in_array($key, $this->classKeys)) {
                 $className = sprintf('%s\%s', __NAMESPACE__, $key);
                 $value = new $className($value);
+            }
+            elseif (in_array($key, $this->arrayClassKeys)) {
+                $arrayValues = $value;
+                $value = [];
+                $className = sprintf('%s\%s', __NAMESPACE__, $this->arrayClassKeys[$key]);
+                foreach ($arrayValues as $v) {
+                    $value[] = new $className($v);
+                }
             }
             $this->{'set' . $key}($value);
         }

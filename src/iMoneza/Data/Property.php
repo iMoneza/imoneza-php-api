@@ -18,6 +18,8 @@ class Property extends DataAbstract
      */
     const QUOTA_PERIOD_MONTHLY = 'Monthly';
 
+    protected $arrayClassKeys = ['PricingGroups'=>'PricingGroup'];
+
     /**
      * @var string
      */
