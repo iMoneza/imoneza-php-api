@@ -18,7 +18,10 @@ class Property extends DataAbstract
      */
     const QUOTA_PERIOD_MONTHLY = 'Monthly';
 
-    protected $arrayClassKeys = ['PricingGroups'=>'PricingGroup'];
+    /**
+     * @var array the keys that are converted to models
+     */
+    protected $arrayClassKeys = ['pricingGroups'=>'PricingGroup'];
 
     /**
      * @var string
