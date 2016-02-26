@@ -14,11 +14,24 @@ $ composer require imoneza/imoneza-php-api
 
 ## Basic Usage
 
-@todo
+There are a number of ways to interact with the API.  But, the way of performing each task is relatively the same.  For 
+this example, let's save a resource to iMoneza.
+
+```PHP
+$options = new \iMoneza\Options\Management\SaveResource();
+$options->setExternalKey('announcement-wisconsin-crowned-king-of-cheese')
+    ->setName('Wisconsin Crowned King of Cheese')
+    ->setTitle('Wisconsin Crowned King of Cheese')
+    ->setPricingGroupId('aaa111bb-22cc-425f-425f-aaa111bb452d');
+
+$logger = new \Monolog\Logger('iMoneza');
+$connection = new \iMoneza\Connection($apiKey, $secretKey, $accessApiKey, $accessSecretKey, new \iMoneza\Request\Curl(), $logger);
+$connection->request($options, new \iMoneza\Data\None());
+```
 
 ## Documentation
 
-@todo
+[Introduction](docs/01-intro.md)
   
 ## About
 
