@@ -1,17 +1,17 @@
 <?php
 /**
- * Tests getting the resource
+ * Tests getting the resource from the user token
  *
  * @author Aaron Saray
+ * @todo get this to run one time successfully
  */
 
 namespace iMoneza\IntegrationTest;
 
 
-use iMoneza\Data\Resource;
 use iMoneza\Helper;
 
-class AccessResourceFromResourceKeyTest extends \PHPUnit_Framework_TestCase
+class GetResourceFromTemporaryUserTokenTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \iMoneza\Connection
@@ -37,17 +37,16 @@ class AccessResourceFromResourceKeyTest extends \PHPUnit_Framework_TestCase
         $this->connection = new \iMoneza\Connection($apiKey, $secretKey, $accessApiKey, $accessSecretKey, new \iMoneza\Request\Curl(), $logger);
     }
 
-    public function testGetResourceFromResourceKey()
+    public function testGetResourceFromTemporaryUserToken()
     {
-        $options = new \iMoneza\Options\Access\ResourceFromResourceKey();
+        $options = new \iMoneza\Options\Access\GetResourceFromTemporaryUserToken();
         $options->setApiBaseURL(getenv('ACCESS_API_URL')); // only for testing
         $options->setResourceKey('x')->setIP(Helper::getCurrentIP())
-            ->setResourceURL('x');
+            ->setResourceURL('x')->setTemporaryUserToken("|635920927109906943|");
 
-        $data = new Resource();
-        $result = $this->connection->request($options, $data);
+        $result = $this->connection->request($options, $options->getDataObject());
 
         $this->assertNotEmpty($result);
-        $this->assertInstanceOf('\iMoneza\Data\Resource', $result);
+        $this->assertInstanceOf('\iMoneza\Data\ResourceAccess', $result);
     }
 }

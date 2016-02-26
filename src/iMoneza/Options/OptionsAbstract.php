@@ -37,6 +37,13 @@ abstract class OptionsAbstract
     }
 
     /**
+     * Get the data object this should return
+     *
+     * @return \iMoneza\Data\DataAbstract
+     */
+    abstract public function getDataObject();
+
+    /**
      * Gets the URL of the base request
      *
      * @return string get the base URL

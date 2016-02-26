@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * The access for this particular resource
  *
  * @author Aaron Saray
  */
@@ -8,10 +8,10 @@
 namespace iMoneza\Data;
 
 /**
- * Class Resource
+ * Class ResourceAccess
  * @package iMoneza\Data
  */
-class Resource extends DataAbstract
+class ResourceAccess extends DataAbstract
 {
     /**
      * @var string
@@ -19,9 +19,19 @@ class Resource extends DataAbstract
     const ACCESS_ACTION_AUTHENTICATE = 'Authenticate';
 
     /**
+     * @var string probably couldn't reach resource
+     */
+    const ACCESS_ACTION_BAD_CONFIG = 'BadConfig';
+
+    /**
      * @var string
      */
     const ACCESS_REASON_DENY = 'Deny';
+
+    /**
+     * @var string
+     */
+    const ACCESS_REASON_GRANT = 'Grant';
 
     /**
      * @var string
