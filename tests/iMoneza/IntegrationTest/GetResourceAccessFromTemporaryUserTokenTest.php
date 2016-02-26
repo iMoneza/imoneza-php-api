@@ -11,7 +11,7 @@ namespace iMoneza\IntegrationTest;
 
 use iMoneza\Helper;
 
-class GetResourceFromTemporaryUserTokenTest extends \PHPUnit_Framework_TestCase
+class GetResourceAccessFromTemporaryUserTokenTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \iMoneza\Connection

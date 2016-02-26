@@ -39,7 +39,7 @@ abstract class DataAbstract
             if (in_array($key, $this->dateTimeKeys)) {
                 $value = new \DateTime($value, new \DateTimeZone('UTC'));
             }
-            elseif (in_array($key, $this->classKeys)) {
+            elseif (in_array($key, $this->classKeys) && !is_null($value)) {
                 $populateValue = $value;
                 $className = sprintf('%s\%s', __NAMESPACE__, $key);
                 $value = new $className();

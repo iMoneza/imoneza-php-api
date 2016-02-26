@@ -10,7 +10,7 @@ namespace iMoneza\IntegrationTest;
 
 use iMoneza\Helper;
 
-class GetResourceFromResourceKeyTest extends \PHPUnit_Framework_TestCase
+class GetResourceTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \iMoneza\Connection
@@ -38,14 +38,13 @@ class GetResourceFromResourceKeyTest extends \PHPUnit_Framework_TestCase
 
     public function testGetResourceFromResourceKey()
     {
-        $options = new \iMoneza\Options\Access\GetResourceFromResourceKey();
-        $options->setApiBaseURL(getenv('ACCESS_API_URL')); // only for testing
-        $options->setResourceKey('x')->setIP(Helper::getCurrentIP())
-            ->setResourceURL('x');
+        $options = new \iMoneza\Options\Management\GetResource();
+        $options->setApiBaseURL(getenv('MANAGEMENT_API_URL')); // only for testing
+        $options->setResourceKey('56cf1eb6731e0');
 
         $result = $this->connection->request($options, $options->getDataObject());
 
         $this->assertNotEmpty($result);
-        $this->assertInstanceOf('\iMoneza\Data\ResourceAccess', $result);
+        $this->assertInstanceOf('\iMoneza\Data\Resource', $result);
     }
 }
