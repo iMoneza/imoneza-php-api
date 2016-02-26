@@ -8,6 +8,7 @@
 namespace iMoneza\Options\Management;
 
 use iMoneza\Data\Property;
+use iMoneza\Data\ResourceCollection;
 use iMoneza\Options\ConfigurationTrait;
 use iMoneza\Options\OptionsAbstract;
 
@@ -36,10 +37,10 @@ class GetResourcesFromProperty extends OptionsAbstract implements ManagementInte
     }
 
     /**
-     * @return Property
+     * @return ResourceCollection
      */
     public function getDataObject()
     {
-        return null;
+        return new ResourceCollection();
     }
 }

@@ -105,9 +105,14 @@ class Connection
             $payload = $httpQuery;
         }
         else {
-            $json = json_encode($populatedValues);
-            $this->debug('Json payload', [$json]);
-            $payload = $json;
+            if (empty($populatedValues)) {
+                $this->debug('Empty payload');
+            }
+            else {
+                $json = json_encode($populatedValues);
+                $this->debug('Json payload', [$json]);
+                $payload = $json;
+            }
         }
 
         $this->request->setRequestTypeAndPayload($requestType, $payload);
