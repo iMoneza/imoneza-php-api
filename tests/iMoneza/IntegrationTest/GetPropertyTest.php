@@ -8,7 +8,7 @@
 namespace iMoneza\IntegrationTest;
 
 
-class GetPropertyDetailsTest extends \PHPUnit_Framework_TestCase
+class GetPropertyTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \iMoneza\Connection
@@ -36,13 +36,12 @@ class GetPropertyDetailsTest extends \PHPUnit_Framework_TestCase
 
     public function testGetPropertyData()
     {
-        $options = new \iMoneza\Options\Management\Property();
+        $options = new \iMoneza\Options\Management\GetProperty();
         $options->setApiBaseURL(getenv('MANAGEMENT_API_URL')); // only for testing
 
-        $result = $this->connection->request($options, new \iMoneza\Data\Property());
+        $result = $this->connection->request($options, $options->getDataObject());
 
         $this->assertNotEmpty($result);
         $this->assertInstanceOf('\iMoneza\Data\Property', $result);
-
     }
 }

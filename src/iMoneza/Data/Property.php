@@ -21,7 +21,7 @@ class Property extends DataAbstract
     /**
      * @var array the keys that are converted to models
      */
-    protected $arrayClassKeys = ['PricingGroups'=>'PricingGroup'];
+    protected $arrayClassKeys = ['PricingGroups'=>'PricingGroup', 'SubscriptionGroups'=>'SubscriptionGroup'];
 
     /**
      * @var string

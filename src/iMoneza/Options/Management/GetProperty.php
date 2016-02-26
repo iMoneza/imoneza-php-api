@@ -7,14 +7,15 @@
 
 namespace iMoneza\Options\Management;
 
+use iMoneza\Data\Property;
 use iMoneza\Options\ConfigurationTrait;
 use iMoneza\Options\OptionsAbstract;
 
 /**
- * Class Property
+ * Class GetProperty
  * @package iMoneza\Options\Management
  */
-class Property extends OptionsAbstract implements ManagementInterface
+class GetProperty extends OptionsAbstract implements ManagementInterface
 {
     use ConfigurationTrait, ManagementConfigurationTrait;
 
@@ -32,5 +33,13 @@ class Property extends OptionsAbstract implements ManagementInterface
     public function getRequestType()
     {
         return self::REQUEST_TYPE_GET;
+    }
+
+    /**
+     * @return Property
+     */
+    public function getDataObject()
+    {
+        return new Property();
     }
 }
