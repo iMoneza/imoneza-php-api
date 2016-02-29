@@ -446,6 +446,4 @@ class Resource extends DataAbstract
         $this->Property = $Property;
         return $this;
     }
-
-
 }

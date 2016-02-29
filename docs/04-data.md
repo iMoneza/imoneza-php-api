@@ -66,9 +66,87 @@ This represents your property.
 
 - `setAlwaysRequireAuthentication()`/`isAlwaysRequireAuthentication()`  Whether to always require authentication
 
+#### `iMoneza\Data\Purchase`
 
+This represents a purchase.
 
+- `setIsPurchased()`/`isPurchased()`  Whether it is purchased or not.
 
+#### `iMoneza\Data\Quota`
+
+This represents a quota or meter.
+
+- `setIsEnabled()`/`isEnabled()`  Whether it is enabled.
+
+- `setHitCount()`/`getHitCount()`  Gets hits against this quota.
+
+- `setAllowedHits()`/`getAllowedHits()`  The allowed hits.
+
+- `setPeriodStartDate()`/`getPeriodStartDate()`  The start of this quota period.
+
+- `setPeriodName()`/`getPeriodName()`  The name of this period.
+
+- `setIsMet()`/`isMet()`  Whether this quota is met or not.
+
+#### `iMoneza\Data\Resource`
+
+This represents a resource.
+
+- `setName()`/`getName()`  The internal name of the resource
+
+- `setExternalKey()`/`getExternalKey()` The external key of the resource
+
+- `setActive()`/`isActive()`  Whether this resource is active or not
+
+- `setURL()`/`getURL()`  The URL of the resource
+
+- `setTitle()`/`getTitle()`  The title of the resource
+
+- `setDescription()`/`getDescription()` The description of this resource 
+
+- `setByline()`/`getByline()`  The author of this resource
+
+- `setPublicationDate()`/`getPublicationDate()`  The publication date
+
+- `setPricingGroup()`/`getPricingGroup()`  A PricingGroup data object
+
+- `setPricingModel()`/`getPricingModel()`  The pricing model for this resource
+
+- `setExpirationPeriodUnit()`/`getExpirationPeriodUnit()`  
+
+- `setExpirationPeriodValue()`/`getExpirationPeriodValue()` 
+
+- `setTargetConversionRate()`/`getTargetConversionRate()` 
+
+- `setTargetConversionPriceFloor()`/`getTargetConversionPriceFloor()`  
+
+- `setTargetConversionHitsPerRecalculationPeriod()`/`getTargetConversionHitsPerRecalculationPeriod()`  
+
+- `setResourcePricingTiers()`/`getResourcePricingTiers()`  
+
+- `setProperty()`/`getProperty()`  The property associated with this resource
+
+#### `iMoneza\Data\ResourceAccess`
+
+This represents the access available to a resource for the consumer.
+
+@todo details
+
+#### `iMoneza\Data\ResourceCollection`
+
+This is a collection object that implements array access.  It contains elements of the object Resource.
+
+#### `iMoneza\Data\Subscription`
+
+Represents the Subscription.
+
+@todo details
+
+#### `iMoneza\Data\SubscriptionGroup`
+
+Represents the Subscription Group.
+
+@todo details
 
 #### `iMoneza\Data\None`
 
