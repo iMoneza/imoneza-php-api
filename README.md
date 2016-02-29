@@ -51,11 +51,11 @@ Bugs and feature request are tracked on [GitHub](https://github.com/iMoneza/imon
 
 ### Author
 
-iMoneza, LLC
+[iMoneza, LLC](https://imoneza.com)
 
 #### Contributors
 
-Aaron Saray - <http://aaronsaray.com>
+[Aaron Saray](https://github.com/aaronsaray)
 
 ### License
 
