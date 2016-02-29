@@ -1,4 +1,4 @@
-# imoneza-php-api
+# iMoneza PHP API
 A PHP library to integrate iMoneza into your application.
 
 Using your <http://imoneza.com> account, you can interact with all parts of the API using this library.  This library
