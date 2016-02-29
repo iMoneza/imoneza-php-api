@@ -130,7 +130,29 @@ This represents a resource.
 
 This represents the access available to a resource for the consumer.
 
-@todo details
+- `setUserToken()`/`getUserToken()` The user token
+
+- `setPropertyName()`/`getPropertyName()` The name of the property the resource belongs to
+
+- `setPaywallDisplayStyle()`/`getPaywallDisplayStyle()` The paywall display style
+
+- `setResourceName()`/`getResourceName()` The name of the resource
+
+- `setUserName()`/`getUserName()` 
+
+- `setIsAnonymousUser()`/`isAnonymousUser()` Whether anonymous user or not
+
+- `setQuota()`/`getQuota()` get `iMoneza\Data\Quota` for this
+
+- `setSubscription()`/`getSubscription()` get `iMoneza\Data\Subscription` for this
+
+- `setPurchase()`/`getPurchase()` get `iMoneza\Data\Purchase` for this
+
+- `setAccessAction()`/`getAccessAction()` 
+
+- `setAccessReason()`/`getAccessReason()` 
+
+- `setAccessActionUrl()`/`getAccessActionUrl()` The URL to send the access to
 
 #### `iMoneza\Data\ResourceCollection`
 
@@ -140,13 +162,28 @@ This is a collection object that implements array access.  It contains elements 
 
 Represents the Subscription.
 
-@todo details
+- `setIsExpired()`/`isExpired()` Whether the subscription is expired.
+
+- `setExpirationDate()`/`getExpirationDate()` The expiration date
+
+- `setIsCurrent()`/`isCurrent()` Whether it's current
+
+- `setSubscriptionGroupID()`/`getSubscriptionGroupID()` The ID
 
 #### `iMoneza\Data\SubscriptionGroup`
 
 Represents the Subscription Group.
 
-@todo details
+- `setSubscriptionGroupID()`/`getSubscriptionGroupID()`  Set Subscription Group ID
+
+- `setName()`/`getName()`  The internal name of the subscription group.
+
+- `setTitle()`/`getTitle()`  The title of the group
+
+- `setPrice()`/`getPrice()`  The price
+
+- `setPeriod()`/`getPeriod()`  
+
 
 #### `iMoneza\Data\None`
 
