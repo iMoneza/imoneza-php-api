@@ -7,6 +7,7 @@
 
 namespace iMoneza\Options\Management;
 
+use iMoneza\Data\None;
 use iMoneza\Options\ConfigurationTrait;
 use iMoneza\Options\OptionsAbstract;
 
@@ -116,5 +117,13 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
     public function getRequestType()
     {
         return self::REQUEST_TYPE_PUT;
+    }
+
+    /**
+     * @return None
+     */
+    public function getDataObject()
+    {
+        return new None();
     }
 }
