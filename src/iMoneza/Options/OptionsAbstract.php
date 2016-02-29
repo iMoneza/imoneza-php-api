@@ -12,7 +12,7 @@ use iMoneza\Exception;
  * Class OptionsAbstract
  * @package iMoneza\Options
  */
-abstract class OptionsAbstract
+abstract class OptionsAbstract implements OptionsInterface
 {
     /**
      * @var string this is a get method

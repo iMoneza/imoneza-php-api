@@ -32,6 +32,10 @@ $connection->request($options, new \iMoneza\Data\None());
 ## Documentation
 
 [Introduction](docs/01-intro.md)
+[The Connection Object](docs/02-connection.md)
+[Options Objects](docs/03-options.md)
+[Data Objects](docs/04-data.md)
+[Examples](docs/05-examples.md)
   
 ## About
 

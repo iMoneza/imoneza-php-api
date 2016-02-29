@@ -11,7 +11,7 @@ namespace iMoneza\Data;
  * Class DataAbstract
  * @package iMoneza\Data
  */
-abstract class DataAbstract
+abstract class DataAbstract implements DataInterface
 {
     /**
      * @var array keys to create date time objects
