@@ -12,4 +12,12 @@ namespace iMoneza\Data;
  * @package iMoneza\Data
  */
 interface DataInterface
-{}
+{
+    /**
+     * Populate the data object
+     *
+     * @param array $values
+     * @return mixed
+     */
+    public function populate(array $values = []);
+}

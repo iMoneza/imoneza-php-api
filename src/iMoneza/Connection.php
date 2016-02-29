@@ -7,10 +7,11 @@
 
 namespace iMoneza;
 use iMoneza\Data\DataAbstract;
-use iMoneza\Data\Resource;
+use iMoneza\Data\DataInterface;
 use iMoneza\Exception;
 use iMoneza\Options\Access\AccessInterface;
 use iMoneza\Options\OptionsAbstract;
+use iMoneza\Options\OptionsInterface;
 use iMoneza\Request\RequestInterface;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
@@ -71,8 +72,8 @@ class Connection
     }
 
     /**
-     * @param OptionsAbstract $options
-     * @param DataAbstract $dataObject
+     * @param OptionsInterface $options
+     * @param DataInterface $dataObject
      * @return DataAbstract
      * @throws Exception\AccessDenied
      * @throws Exception\AuthenticationFailure
@@ -80,7 +81,7 @@ class Connection
      * @throws Exception\NotFound
      * @throws Exception\TransferError
      */
-    public function request(OptionsAbstract $options, DataAbstract $dataObject)
+    public function request(OptionsInterface $options, DataInterface $dataObject)
     {
         $apiKey = ($options instanceof AccessInterface ? $this->accessApiKey : $this->manageApiKey);
         $apiSecret = ($options instanceof AccessInterface ? $this->accessApiSecret : $this->manageApiSecret);

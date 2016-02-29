@@ -298,6 +298,4 @@ class Property extends DataAbstract
         $this->alwaysRequireAuthentication = $alwaysRequireAuthentication;
         return $this;
     }
-
-
 }

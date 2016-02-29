@@ -42,6 +42,7 @@ abstract class DataAbstract implements DataInterface
             elseif (in_array($key, $this->classKeys) && !is_null($value)) {
                 $populateValue = $value;
                 $className = sprintf('%s\%s', __NAMESPACE__, $key);
+                /** @var self $value */
                 $value = new $className();
                 $value->populate($populateValue);
             }
@@ -50,6 +51,7 @@ abstract class DataAbstract implements DataInterface
                 $value = [];
                 $className = sprintf('%s\%s', __NAMESPACE__, $this->arrayClassKeys[$key]);
                 foreach ($arrayValues as $v) {
+                    /** @var self $class */
                     $class = new $className();
                     $class->populate($v);
                     $value[] = $class;
