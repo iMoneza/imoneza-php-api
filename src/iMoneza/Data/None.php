@@ -20,7 +20,7 @@ class None extends DataAbstract
      * @param $value
      * @return $this
      */
-    public function __set($key, $value)
+    public function __call($key, $value)
     {
         return $this;
     }
