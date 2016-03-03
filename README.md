@@ -44,9 +44,10 @@ $connection->request($options, new \iMoneza\Data\None());
  - Curl
  - iMoneza publisher account
  
-### Bugs and Feature Requests
+### Bugs, Feature Requests and Testing
 
-Bugs and feature request are tracked on [GitHub](https://github.com/iMoneza/imoneza-php-api/issues)
+Bugs and feature request are tracked on [GitHub](https://github.com/iMoneza/imoneza-php-api/issues).  Testing is managed
+by [Travis CI](http://travis-ci.org).
 
 ### Author
 
