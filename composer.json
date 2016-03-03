@@ -26,5 +26,8 @@
   },
   "autoload-dev": {
     "psr-4": {"iMoneza\\tests\\": "tests/iMoneza"}
+  },
+  "scripts": {
+    "test": "phpunit"
   }
 }
