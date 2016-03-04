@@ -51,7 +51,7 @@ $connection->request($options, new \iMoneza\Data\None());
 ### Bugs, Feature Requests and Testing
 
 Bugs and feature request are tracked on [GitHub](https://github.com/iMoneza/imoneza-php-api/issues).  Testing is managed
-by [Travis CI](http://travis-ci.org).
+by [Travis CI](http://travis-ci.org) and coverage provided by Coveralls.
 
 ### Author
 
