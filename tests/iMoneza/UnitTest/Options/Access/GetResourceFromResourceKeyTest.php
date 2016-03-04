@@ -55,4 +55,10 @@ class ResourceFromResourceKeyTest extends \PHPUnit_Framework_TestCase
         $options->setAccessKey('access-key')->setResourceKey('resource-key');
         $this->assertEquals('/api/Resource/access-key/resource-key', $options->getEndPoint());
     }
+
+    public function testGetDataObject()
+    {
+        $options = new GetResourceFromResourceKey();
+        $this->assertInstanceOf('iMoneza\Data\ResourceAccess', $options->getDataObject());
+    }
 }
