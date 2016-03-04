@@ -279,7 +279,7 @@ class Resource extends DataAbstract
      * @param PricingGroup $PricingGroup
      * @return Resource
      */
-    public function setPricingGroup($PricingGroup)
+    public function setPricingGroup(PricingGroup $PricingGroup)
     {
         $this->PricingGroup = $PricingGroup;
         return $this;
