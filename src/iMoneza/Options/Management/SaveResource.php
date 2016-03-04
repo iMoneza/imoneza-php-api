@@ -50,14 +50,6 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
     }
 
     /**
-     * @return string
-     */
-    public function getExternalKey()
-    {
-        return $this->ExternalKey;
-    }
-
-    /**
      * @param string $externalKey
      * @return $this
      */
@@ -68,14 +60,6 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
     }
 
     /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->Name;
-    }
-
-    /**
      * @param string $name
      * @return SaveResource
      */
@@ -83,14 +67,6 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
     {
         $this->Name = $name;
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->Title;
     }
 
     /**
