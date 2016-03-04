@@ -22,6 +22,9 @@
     "symfony/yaml": "2.8.*",
     "phpunit/phpunit": "^4.8",
     "symfony/config": "2.8.*",
+    "symfony/console": "^2.1",
+    "symfony/filesystem": "^2.1",
+    "symfony/stopwatch": "^2.1",
     "satooshi/php-coveralls": "~1.0"
   },
   "autoload": {
