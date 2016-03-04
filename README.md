@@ -1,6 +1,7 @@
 # iMoneza PHP API
 
 [![Build Status](https://travis-ci.org/iMoneza/imoneza-php-api.svg?branch=master)](https://travis-ci.org/iMoneza/imoneza-php-api)
+[![Coverage Status](https://coveralls.io/repos/github/iMoneza/imoneza-php-api/badge.svg?branch=master)](https://coveralls.io/github/iMoneza/imoneza-php-api?branch=master)
 
 A PHP library to integrate iMoneza into your application.
 

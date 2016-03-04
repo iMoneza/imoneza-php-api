@@ -15,7 +15,8 @@
   "require": {
     "php": ">=5.4.0",
     "lib-curl": ">=7.0",
-    "monolog/monolog": ">=1.17"
+    "monolog/monolog": ">=1.17",
+    "satooshi/php-coveralls": "~1.0"
   },
   "require-dev": {
     "vlucas/phpdotenv": "^2.2",
