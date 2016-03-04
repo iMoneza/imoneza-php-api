@@ -6,7 +6,6 @@
  */
 
 namespace iMoneza\UnitTest\Data;
-use iMoneza\Data\PricingGroup;
 use iMoneza\Data\Property;
 use iMoneza\Data\Resource;
 
