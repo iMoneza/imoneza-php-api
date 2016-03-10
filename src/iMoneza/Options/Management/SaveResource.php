@@ -40,6 +40,66 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
     protected $PricingGroup;
 
     /**
+     * @var boolean
+     */
+    protected $Active;
+
+    /**
+     * @var string
+     */
+    protected $URL;
+
+    /**
+     * @var string
+     */
+    protected $Byline;
+
+    /**
+     * @var string
+     */
+    protected $Description;
+
+    /**
+     * @var string
+     */
+    protected $PublicationDate;
+
+    /**
+     * @var string
+     */
+    protected $PricingModel;
+
+    /**
+     * @var float
+     */
+    protected $Price;
+
+    /**
+     * @var string
+     */
+    protected $ExpirationPeriodUnit;
+
+    /**
+     * @var int
+     */
+    protected $ExpirationPeriodValue;
+
+    /**
+     * @var float
+     */
+    protected $TargetConversionRate;
+
+    /**
+     * @var float
+     */
+    protected $TargetConversionPriceFloor;
+
+    /**
+     * @var int
+     */
+    protected $TargetConversionHitsPerRecalculationPeriod;
+
+    /**
      * @param $pricingGroupId
      * @return $this
      */
@@ -101,5 +161,125 @@ class SaveResource extends OptionsAbstract implements ManagementInterface
     public function getDataObject()
     {
         return new None();
+    }
+
+    /**
+     * @param boolean $Active
+     * @return SaveResource
+     */
+    public function setActive($Active)
+    {
+        $this->Active = $Active;
+        return $this;
+    }
+
+    /**
+     * @param string $URL
+     * @return SaveResource
+     */
+    public function setURL($URL)
+    {
+        $this->URL = $URL;
+        return $this;
+    }
+
+    /**
+     * @param string $Byline
+     * @return SaveResource
+     */
+    public function setByline($Byline)
+    {
+        $this->Byline = $Byline;
+        return $this;
+    }
+
+    /**
+     * @param string $Description
+     * @return SaveResource
+     */
+    public function setDescription($Description)
+    {
+        $this->Description = $Description;
+        return $this;
+    }
+
+    /**
+     * @param \DateTime $PublicationDate
+     * @return SaveResource
+     */
+    public function setPublicationDate(\DateTime $PublicationDate)
+    {
+        $this->PublicationDate = $PublicationDate->format('c');
+        return $this;
+    }
+
+    /**
+     * @param string $PricingModel
+     * @return SaveResource
+     */
+    public function setPricingModel($PricingModel)
+    {
+        $this->PricingModel = $PricingModel;
+        return $this;
+    }
+
+    /**
+     * @param float $Price
+     * @return SaveResource
+     */
+    public function setPrice($Price)
+    {
+        $this->Price = $Price;
+        return $this;
+    }
+
+    /**
+     * @param string $ExpirationPeriodUnit
+     * @return SaveResource
+     */
+    public function setExpirationPeriodUnit($ExpirationPeriodUnit)
+    {
+        $this->ExpirationPeriodUnit = $ExpirationPeriodUnit;
+        return $this;
+    }
+
+    /**
+     * @param int $ExpirationPeriodValue
+     * @return SaveResource
+     */
+    public function setExpirationPeriodValue($ExpirationPeriodValue)
+    {
+        $this->ExpirationPeriodValue = $ExpirationPeriodValue;
+        return $this;
+    }
+
+    /**
+     * @param float $TargetConversionRate
+     * @return SaveResource
+     */
+    public function setTargetConversionRate($TargetConversionRate)
+    {
+        $this->TargetConversionRate = $TargetConversionRate;
+        return $this;
+    }
+
+    /**
+     * @param float $TargetConversionPriceFloor
+     * @return SaveResource
+     */
+    public function setTargetConversionPriceFloor($TargetConversionPriceFloor)
+    {
+        $this->TargetConversionPriceFloor = $TargetConversionPriceFloor;
+        return $this;
+    }
+
+    /**
+     * @param int $TargetConversionHitsPerRecalculationPeriod
+     * @return SaveResource
+     */
+    public function setTargetConversionHitsPerRecalculationPeriod($TargetConversionHitsPerRecalculationPeriod)
+    {
+        $this->TargetConversionHitsPerRecalculationPeriod = $TargetConversionHitsPerRecalculationPeriod;
+        return $this;
     }
 }
