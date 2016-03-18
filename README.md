@@ -40,6 +40,12 @@ $connection->request($options, new \iMoneza\Data\None());
 [Options Objects](docs/03-options.md)  
 [Data Objects](docs/04-data.md)  
 [Examples](docs/examples)
+
+## Todo
+
+- Retrieving all resources is causing an error 500 at the moment
+- External Subscriber Import/Export requests
+- Callback results
   
 ## About
 
