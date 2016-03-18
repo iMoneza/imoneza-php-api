@@ -18,6 +18,7 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Class Connection
+ * @codeCoverageIgnore this will be covered in integration testing
  * @package iMoneza
  */
 class Connection
