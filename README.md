@@ -46,6 +46,7 @@ $connection->request($options, new \iMoneza\Data\None());
 - Retrieving all resources is causing an error 500 at the moment
 - External Subscriber Import/Export requests
 - Callback results
+- Integration testing for Connection object
   
 ## About
 
