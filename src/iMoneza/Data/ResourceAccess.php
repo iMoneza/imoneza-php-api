@@ -19,9 +19,14 @@ class ResourceAccess extends DataAbstract
     const ACCESS_ACTION_AUTHENTICATE = 'Authenticate';
 
     /**
+     * @var string
+     */
+    const ACCESS_ACTION_GRANT = 'Grant';
+
+    /**
      * @var string probably couldn't reach resource
      */
-    const ACCESS_ACTION_BAD_CONFIG = 'BadConfig';
+    const ACCESS_REASON_BAD_CONFIG = 'BadConfig';
 
     /**
      * @var string
@@ -37,6 +42,16 @@ class ResourceAccess extends DataAbstract
      * @var string
      */
     const PAYWALL_DISPLAY_STYLE_MOBILE_REDIRECT = 'RedirectMobile';
+
+    /**
+     * @var string
+     */
+    const PAYWALL_DISPLAY_STYLE_ALL_REDIRECT = 'RedirectAll';
+
+    /**
+     * @var string
+     */
+    const PAYLWALL_DISPLAY_STYLE_MODAL_OVERLAY = 'ModalOverlay';
 
     /**
      * @var string

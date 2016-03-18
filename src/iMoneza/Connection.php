@@ -8,6 +8,7 @@
 namespace iMoneza;
 use iMoneza\Data\DataAbstract;
 use iMoneza\Data\DataInterface;
+use iMoneza\Data\None;
 use iMoneza\Exception;
 use iMoneza\Options\Access\AccessInterface;
 use iMoneza\Options\OptionsAbstract;
@@ -161,11 +162,16 @@ class Connection
         $this->debug('All error checking passed.');
         $this->log->info("The request was successful.");
 
-        $jsonArray = json_decode($result, true);
-        if (is_null($jsonArray)) {
-            throw new Exception\DecodingError(json_last_error_msg(), json_last_error());
+        if (!($dataObject instanceof None)) {
+            $jsonArray = json_decode($result, true);
+            if (is_null($jsonArray)) {
+                throw new Exception\DecodingError(json_last_error_msg(), json_last_error());
+            }
+
+            $dataObject->populate($jsonArray);
         }
-        return $dataObject->populate($jsonArray);
+
+        return $dataObject;
     }
 
     /**
