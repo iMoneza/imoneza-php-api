@@ -50,4 +50,11 @@ class DataAbstractTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('pricing group name', $property->getPricingGroups()[0]->getName());
         $this->assertEquals('the name', $property->getName());
     }
+
+    public function testPopulateWithPropertyNotAvailableSilentlyContinues()
+    {
+        $property = new Property();
+        $property->populate(['nothing-here'=>'no value']);
+        $this->addToAssertionCount(1); // no error here
+    }
 }

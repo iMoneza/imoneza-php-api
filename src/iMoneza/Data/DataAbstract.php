@@ -36,28 +36,31 @@ abstract class DataAbstract implements DataInterface
     public function populate(array $values = [])
     {
         foreach ($values as $key => $value) {
-            if (in_array($key, $this->dateTimeKeys)) {
-                $value = new \DateTime($value, new \DateTimeZone('UTC'));
-            }
-            elseif (in_array($key, $this->classKeys) && !is_null($value)) {
-                $populateValue = $value;
-                $className = sprintf('%s\%s', __NAMESPACE__, $key);
-                /** @var self $value */
-                $value = new $className();
-                $value->populate($populateValue);
-            }
-            elseif (array_key_exists($key, $this->arrayClassKeys)) {
-                $arrayValues = $value;
-                $value = [];
-                $className = sprintf('%s\%s', __NAMESPACE__, $this->arrayClassKeys[$key]);
-                foreach ($arrayValues as $v) {
-                    /** @var self $class */
-                    $class = new $className();
-                    $class->populate($v);
-                    $value[] = $class;
+            $methodName = "set{$key}";
+            if (method_exists($this, $methodName)) {
+                if (in_array($key, $this->dateTimeKeys)) {
+                    $value = new \DateTime($value, new \DateTimeZone('UTC'));
                 }
+                elseif (in_array($key, $this->classKeys) && !is_null($value)) {
+                    $populateValue = $value;
+                    $className = sprintf('%s\%s', __NAMESPACE__, $key);
+                    /** @var self $value */
+                    $value = new $className();
+                    $value->populate($populateValue);
+                }
+                elseif (array_key_exists($key, $this->arrayClassKeys)) {
+                    $arrayValues = $value;
+                    $value = [];
+                    $className = sprintf('%s\%s', __NAMESPACE__, $this->arrayClassKeys[$key]);
+                    foreach ($arrayValues as $v) {
+                        /** @var self $class */
+                        $class = new $className();
+                        $class->populate($v);
+                        $value[] = $class;
+                    }
+                }
+                $this->$methodName($value);
             }
-            $this->{'set' . $key}($value);
         }
 
         return $this;
