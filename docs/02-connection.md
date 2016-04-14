@@ -4,7 +4,7 @@
 
 The connection object is responsible for accepting your credentials, sending a request, retrieving a response and emitting
 any errors.  To use the connection object, you must have access to both API's (access and management).  You will also need
-a PSR-3 compatible logger (Monolog is included by default), and Curl (There is an interface available if you'd like to create
+a PSR-3 compatible logger (Monolog is suggested), and Curl (There is an interface available if you'd like to create
 your own connection toolset void of curl).
 
 ### Constructing the Connection Object
