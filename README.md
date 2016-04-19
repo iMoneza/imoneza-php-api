@@ -57,8 +57,10 @@ be completed.
  
 ### Bugs, Feature Requests and Testing
 
-Bugs and feature request are tracked on [GitHub](https://github.com/iMoneza/imoneza-php-api/issues).  Testing is managed
-by [Travis CI](http://travis-ci.org) and coverage provided by Coveralls.
+The features of this project are handled internally by iMoneza.  However, we do encourage you to visit [the issues section](https://github.com/iMoneza/imoneza-nodejs-api/issues)
+here on GitHub if you have any suggestions, requests, or find a bug.
+
+Testing is managed by [Travis CI](http://travis-ci.org) and coverage provided by Coveralls.
 
 ### Author
 

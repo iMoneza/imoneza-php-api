@@ -71,7 +71,7 @@ This is used to retrieve all the resources from the current property.  There are
 
 #### `iMoneza\Options\Management\SaveResource`
 
-This is used to save a new resource.  The following setters are available:
+This is used to save a new resource or update an existing one.  The following setters are available:
 
 - `setExternalKey()` Use this to set the resource key (or external ID) of the resource.
 
