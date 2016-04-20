@@ -12,7 +12,7 @@ use iMoneza\Options\ConfigurationTrait;
 use iMoneza\Options\OptionsAbstract;
 
 /**
- * Class ExternalSubscriberExport
+ * Class CallbackResult
  * @package iMoneza\Options\Management
  */
 class ExternalSubscriberExport extends OptionsAbstract implements ManagementInterface

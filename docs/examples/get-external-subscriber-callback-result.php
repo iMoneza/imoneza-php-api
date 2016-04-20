@@ -8,13 +8,12 @@
 /** @var \iMoneza\Connection $connection */
 $connection = require '_build-connection.php';
 
-$options = new \iMoneza\Options\Management\ExternalSubscriberExport();
+$options = new \iMoneza\Options\Management\CallbackResult();
 $options->setApiBaseURL(getenv('MANAGEMENT_API_URL')); // only for testing
 
-$options->setStartDate(new \DateTime('2016-04-20 00:00:00'))->setEndDate(new \DateTime('2016-04-20 23:59:59'));
+$options->setCallbackToken("5d0f5ca5-2528-4bbd-b83f-18b3a732c1ee");
 
 $result = $connection->request($options, $options->getDataObject());
 
-print "Callback ID:\n";
-print $result->getID();
-print "\n";
+print "Here is the result:\n";
+var_dump($result);

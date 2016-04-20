@@ -188,7 +188,7 @@ Represents the Subscription Group.
 
 Represents the External Subscription Export Request response.
 
-- `setID()`/`getId()`  The ID of the request - used with the callback.
+- `setID()`/`getId()`  The ID of the request - NOT the callback ID.
 
 - `setNotificationEmailAddress()`/`getNotificationEmailAddress()`  
 
@@ -202,3 +202,6 @@ Represents the External Subscription Export Request response.
 
 This is a special data object that is used for methods that return no data - or if you want to ignore any data that was retrieved.
 
+#### `iMoneza\Data\CallbackResult`
+
+This is a special data object that just accepts any data and puts it as public properties on itself - very similar to a `stdClass`.

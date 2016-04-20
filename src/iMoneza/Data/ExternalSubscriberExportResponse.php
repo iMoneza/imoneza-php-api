@@ -19,7 +19,7 @@ class ExternalSubscriberExportResponse extends DataAbstract
     const STATUS_QUEUED = 'Queued';
 
     /**
-     * @var string the id of this request
+     * @var string the id of this request (NOT the callback ID)
      */
     protected $id;
 

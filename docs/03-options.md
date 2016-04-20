@@ -107,7 +107,7 @@ This is used to save a new resource or update an existing one.  The following se
 
 - `getDataObject()` This returns a new instance of a class that basically accepts no data.
 
-#### `iMoneza\Options\Management\ExternalSubscriberExport`
+#### `iMoneza\Options\Management\CallbackResult`
 
 This is used to retrieve a resource from the current property.
 
@@ -115,4 +115,4 @@ This is used to retrieve a resource from the current property.
 
 - `setEndDate()` Use this to set the end date of the external subscribers export - use a `DateTime` object.
 
-- `getDataObject()` This returns a new instance of the data object of `iMoneza\Data\ExternalSubscriberExportResponse`.
+- `getDataObject()` This returns a new instance of the data object of `iMoneza\Data\CallbackResult`.
