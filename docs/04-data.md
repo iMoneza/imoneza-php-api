@@ -184,6 +184,19 @@ Represents the Subscription Group.
 
 - `setPeriod()`/`getPeriod()`  
 
+#### `iMoneza\Data\ExternalSubscriberExportResponse`
+
+Represents the External Subscription Export Request response.
+
+- `setID()`/`getId()`  The ID of the request - used with the callback.
+
+- `setNotificationEmailAddress()`/`getNotificationEmailAddress()`  
+
+- `setStatus()`/`getStatus()`  The status of the request.
+
+- `setStartDate()`/`getStartDate()`  When the requested export begins.
+
+- `setEndDate()`/`getEndDate()`  When the requested export ends.
 
 #### `iMoneza\Data\None`
 

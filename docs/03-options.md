@@ -106,3 +106,13 @@ This is used to save a new resource or update an existing one.  The following se
 - `setTargetConversionHitsPerRecalculationPeriod()`
 
 - `getDataObject()` This returns a new instance of a class that basically accepts no data.
+
+#### `iMoneza\Options\Management\ExternalSubscriberExport`
+
+This is used to retrieve a resource from the current property.
+
+- `setStartDate()` Use this to set the start date of the external subscribers export - use a `DateTime` object.
+
+- `setEndDate()` Use this to set the end date of the external subscribers export - use a `DateTime` object.
+
+- `getDataObject()` This returns a new instance of the data object of `iMoneza\Data\ExternalSubscriberExportResponse`.
