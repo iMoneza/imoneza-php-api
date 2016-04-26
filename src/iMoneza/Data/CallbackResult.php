@@ -14,16 +14,35 @@ namespace iMoneza\Data;
 class CallbackResult extends DataAbstract
 {
     /**
-     * @param $key
-     * @param $value
+     * @var array callback data
+     */
+    protected $data = [];
+
+    /**
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param array $data
+     * @return CallbackResult
+     */
+    public function setData(array $data)
+    {
+        $this->data = $data;
+        return $this;
+    }
+
+    /**
+     * @param array $values
      * @return $this
      */
-    public function __call($key, $value)
+    public function populate(array $values = [])
     {
-        if (stripos($key, 'set') === 0) {
-            $newKey = substr($key, 3);
-            $this->$newKey = $value;
-        }
+        $this->setData($values);
         return $this;
     }
 }
