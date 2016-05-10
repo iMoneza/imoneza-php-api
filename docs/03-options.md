@@ -28,6 +28,8 @@ future requests.  This is how a user is identified.
 - `setIP()`  This is optional but is recommended for logging and security.  Use `iMoneza\Helper\getCurrentIP()` as a useful way
 to gather this information quickly.
 
+- `setAdBlockerStatus()` This is optional, but should use one of the `AD_BLOCKER_STATUS_*` constants to indicate the result.
+
 - `getDataObject()` This returns a new instance of the data object of `iMoneza\Data\Resource` - think of this as a helper to 
 quickly pass in the corresponding data object for the connection `request()` method to populate.
 

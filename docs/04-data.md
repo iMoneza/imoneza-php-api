@@ -138,7 +138,7 @@ This represents the access available to a resource for the consumer.
 
 - `setResourceName()`/`getResourceName()` The name of the resource
 
-- `setUserName()`/`getUserName()` 
+- `setUserName()`/`getUserName()` Username of the current user
 
 - `setIsAnonymousUser()`/`isAnonymousUser()` Whether anonymous user or not
 
@@ -153,6 +153,17 @@ This represents the access available to a resource for the consumer.
 - `setAccessReason()`/`getAccessReason()` 
 
 - `setAccessActionUrl()`/`getAccessActionUrl()` The URL to send the access to
+
+- `setFirstName()`/`getFirstName()` The first name of the current user
+
+- `setIsAdSupported()`/`isAdSupported()` 
+
+- `setAdSupportedMessage()`/`getAdSupportedMessage()`
+
+- `setAdSupportedMessageTitle()`/`getAdSupportedMessageTitle()`
+
+- `setIsNoCost()`/`isNoCost()`
+
 
 #### `iMoneza\Data\ResourceCollection`
 

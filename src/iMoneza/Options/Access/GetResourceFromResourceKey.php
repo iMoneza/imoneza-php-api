@@ -20,6 +20,26 @@ class GetResourceFromResourceKey extends OptionsAbstract implements AccessInterf
     use ConfigurationTrait, AccessConfigurationTrait;
 
     /**
+     * @var string status for ad blocker
+     */
+    const AD_BLOCKER_STATUS_UNKNOWN = 'Unknown';
+
+    /**
+     * @var string status for ad blocker
+     */
+    const AD_BLOCKER_STATUS_DETECTION_NOT_PERFORMED = 'DetectionNotPerformed';
+
+    /**
+     * @var string status for ad blocker
+     */
+    const AD_BLOCKER_STATUS_NOT_DETECTED = 'AdBlockerNotDetected';
+
+    /**
+     * @var string status for ad blocker
+     */
+    const AD_BLOCKER_STATUS_DETECTED = 'AdBlockerDetected';
+
+    /**
      * @var string the resource key (private because part of get params)
      */
     private $resourceKey = '';
@@ -39,6 +59,11 @@ class GetResourceFromResourceKey extends OptionsAbstract implements AccessInterf
      */
     protected $IP = '';
 
+    /**
+     * @var string
+     */
+    protected $AdBlockerStatus = '';
+    
     /**
      * @param mixed $resourceKey
      * @return $this
@@ -76,6 +101,16 @@ class GetResourceFromResourceKey extends OptionsAbstract implements AccessInterf
     public function setIP($IP)
     {
         $this->IP = $IP;
+        return $this;
+    }
+
+    /**
+     * @param string $AdBlockerStatus
+     * @return GetResourceFromResourceKey
+     */
+    public function setAdBlockerStatus($AdBlockerStatus)
+    {
+        $this->AdBlockerStatus = $AdBlockerStatus;
         return $this;
     }
 
