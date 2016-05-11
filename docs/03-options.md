@@ -47,6 +47,8 @@ This is used to retrieve resources from the external key and user temp token.  T
 - `setIP()`  This is optional but is recommended for logging and security.  Use `iMoneza\Helper\getCurrentIP()` as a useful way
 to gather this information quickly.
 
+- `setAdBlockerStatus()` This is optional, but should use one of the `AD_BLOCKER_STATUS_*` constants to indicate the result.
+
 - `getDataObject()` This returns a new instance of the data object of `iMoneza\Data\Resource`.
 
 

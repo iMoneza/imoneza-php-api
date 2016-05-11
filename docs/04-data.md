@@ -195,6 +195,10 @@ Represents the Subscription Group.
 
 - `setPeriod()`/`getPeriod()`  
 
+- `setPaywallDescription()`/`getPaywallDescription()`
+
+- `setPaywallShortDescription()`/`getPaywallShortDescription()`
+
 #### `iMoneza\Data\ExternalSubscriberExportResponse`
 
 Represents the External Subscription Export Request response.
