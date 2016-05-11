@@ -95,6 +95,8 @@ This is used to save a new resource or update an existing one.  The following se
 
 - `setPublicationDate()` Sets the publication date of this resource.
 
+- `setPricingGroup()` The pricing group for this resource.
+
 - `setPricingModel()` The pricing model for this resource.
 
 - `setPrice()` The price of this content.
@@ -108,6 +110,10 @@ This is used to save a new resource or update an existing one.  The following se
 - `setTargetConversionPriceFloor()`
 
 - `setTargetConversionHitsPerRecalculationPeriod()`
+
+- `setPaywallDescription()` Set the paywall description for this resource.
+
+- `setPaywallShortDescription()` Set the paywall short description for this resource.
 
 - `getDataObject()` This returns a new instance of a class that basically accepts no data.
 

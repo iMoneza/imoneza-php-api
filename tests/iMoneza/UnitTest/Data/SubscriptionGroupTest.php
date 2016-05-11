@@ -63,7 +63,7 @@ class SubscriptionGroupTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('here ya go', $subscriptionGroup->getPaywallDescription());
     }
 
-    public function getPaywallShortDescription()
+    public function testPaywallShortDescription()
     {
         $subscriptionGroup = new SubscriptionGroup();
         $this->assertNull($subscriptionGroup->getPaywallShortDescription());

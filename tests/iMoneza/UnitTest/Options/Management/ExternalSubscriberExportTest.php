@@ -11,7 +11,7 @@ use iMoneza\Options\Management\ExternalSubscriberExport;
 
 /**
  * Class ExternalSubscriberExportTest
- * @package iMoneza\Tests\Options\Access
+ * @package iMoneza\Tests\Options\Management
  */
 class ExternalSubscriberExportTest extends \PHPUnit_Framework_TestCase
 {

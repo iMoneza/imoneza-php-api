@@ -471,24 +471,4 @@ class ResourceAccess extends DataAbstract
         $this->isNoCost = $isNoCost;
         return $this;
     }
-
-    /**
-     * @return array
-     */
-    public function getClassKeys()
-    {
-        return $this->classKeys;
-    }
-
-    /**
-     * @param array $classKeys
-     * @return ResourceAccess
-     */
-    public function setClassKeys($classKeys)
-    {
-        $this->classKeys = $classKeys;
-        return $this;
-    }
-    
-    
 }
