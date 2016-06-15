@@ -180,7 +180,8 @@ class ResourceAccess extends DataAbstract
     }
 
     /**
-     * @param \DateTime|null $userTokenExpiration
+     * @param string|null $userTokenExpiration
+     * @note overriding the standard \DateTime functionality because this is used for a cookie time - so null means expires at the end of this session
      * @return ResourceAccess
      */
     public function setUserTokenExpiration($userTokenExpiration)
